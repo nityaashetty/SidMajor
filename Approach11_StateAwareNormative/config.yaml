@@ -1,0 +1,83 @@
+# Approach 11 - SANF-Net (State-Aware, age-Normative Fusion network)
+# Every path is relative to this folder. $CAUEEG_ROOT overrides paths.dataset_root.
+# Any value can be overridden from the command line:  --set train.epochs=50 model.use_age=false
+
+experiment: sanf_net
+
+paths:
+  dataset_root: ../caueeg-dataset
+  artifacts: artifacts            # store/, features/, runs/ are created inside
+
+data:                             # 01_build_store.py (changing these invalidates the store)
+  fs_in: 200
+  fs: 100                         # resampled after the 0.5-45 Hz band-pass
+  bandpass: [0.5, 45.0]
+  filter_order: 4
+  clip_uv: 3000
+  skip_start_sec: 10              # sensor settling (CEEDNet's T0 = 2000 samples)
+  transition_guard_sec: [1, 3]    # masked before/after every state change (event offset <= 6 s)
+  artifact_guard_sec: [2, 3]      # masked around point artifacts (move, cough, ...)
+  join_guard_sec: 3               # masked around pause/resume joins in the EDF
+  long_artifact_sec: 30           # sleep / drowsy / snoring
+  post_hv_sec: 60                 # recovery after hyperventilation still counts as HV
+  workers: 6
+
+features:                         # 02_build_features.py
+  window_sec: 4
+  step_sec: 2
+  max_windows: 150
+  normative: true                 # z-score each biomarker against age-matched train Normals
+  normative_degree: 1             # polynomial degree of the age fit
+  z_clip: 6.0
+
+segments:                         # what the deep model sees
+  seconds: 10
+  use_events: true                # false = CEEDNet-style random crops, no state token (ablation)
+  train_per_recording: 12
+  eval_per_recording: 24
+  state_mix: {eyes_closed: 0.6, eyes_open: 0.25, photic: 0.15}
+  signal_clip: 10.0               # after channel scaling
+
+model:
+  kernels: [11, 25, 51]           # 0.11 / 0.25 / 0.51 s at 100 Hz (beta / alpha / delta-theta scale)
+  filters_per_kernel: 8
+  depth_multiplier: 2
+  sep_filters: 64
+  out_filters: 96
+  emb_dim: 128
+  fusion_dim: 128
+  dropout: 0.3
+  use_eeg: true
+  use_biomarkers: true
+  use_age: true
+  use_state_film: true
+  pool: attention                 # attention | mean
+  ordinal: true
+  modality_dropout: 0.15
+
+train:
+  seeds: [0, 1, 2, 3, 4]
+  epochs: 35                      # val peaks ep ~20-30; 100 epochs overfits (run sanf_net_e100: 72.0% best-val vs 58.5% final)
+  warmup_epochs: 3
+  batch_size: 16                  # recordings per batch (x train_per_recording segments)
+  lr: 1.0e-3
+  weight_decay: 5.0e-2
+  ema_decay: 0.995
+  focal_gamma: 1.5
+  class_weights: [1.0, 1.4, 1.2]  # Normal / MCI / Dementia
+  label_smoothing: 0.05
+  ordinal_weight: 0.5
+  grad_clip: 2.0
+  amp: true
+  num_workers: 4
+  augment:
+    amp_scale: [0.9, 1.1]
+    noise_std: 0.05
+    channel_dropout: 0.1
+    bag_mix_prob: 0.3             # replace part of a bag with segments of another same-class patient
+    bag_mix_frac: [0.25, 0.5]
+    bio_noise_std: 0.1
+
+eval:
+  checkpoint: final               # final (EMA after the last epoch) | best (best val macro-F1)
+  fuse_tabular: true              # late fusion with the 03_tabular_baseline model, weight picked on val

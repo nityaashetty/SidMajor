@@ -1,0 +1,262 @@
+[05:30:08] Photic-confound ablation started. Approach11 is read-only. A = no photic segments + no has_photic/has_eo/photic_driving_snr; B = A + eyes-closed only (no EO segments/features). 5-fold CV each, vs Approach11 sanf_net_cv5.
+[05:31:12] verify  OK   packages: numpy 2.3.3, scipy 1.16.2, pandas 3.0.3, sklearn 1.8.0, torch 2.5.1+cu121, yaml 6.0.3, pyedflib 0.1.42
+[05:31:12] verify  OK   dataset: C:\Users\potda\Desktop\Major_Project_Final\caueeg-dataset (1379 EDF, 1379 event files)
+[05:31:12] verify  OK   splits: train 950 / val 119 / test 118 / val_no_overlap 82 / test_no_overlap 90 - no leakage
+[05:31:18] verify  OK   event alignment: pause-corrected event clock matches signal end within 6.0 s (20 recordings)
+[05:31:19] verify  OK   signal store: 1187 recordings at 100 Hz
+[05:31:32] verify  OK   model step: cuda | batch x (4, 12, 19, 1000) | 39 biomarkers | loss 1.920 | peak 0.28 GB
+[05:31:32] verify: ALL OK
+[05:31:52] train: run 'A_noprotocol_cv5' on NVIDIA GeForce RTX 4050 Laptop GPU | 5 folds | overrides none
+[05:31:52] fold 0: 855 train / 214 held-out recordings
+[05:31:55] fold0: training 142.2k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[05:32:27] analyze_oof: 'sanf_net_cv5' - rebuilding out-of-fold predictions from 5 fold models
+[05:32:38] fold0 ep   1/35 loss 1.2283 train 42.9% | val(EMA) 43.5% F1 0.3557 AUC 0.625 | gates {'eeg': 0.25, 'bio': 0.423, 'age': 0.327} | 43.0s *best*
+[05:32:45] fold0 ep   2/35 loss 1.0982 train 51.9% | val(EMA) 50.0% F1 0.3979 AUC 0.694 | gates {'eeg': 0.218, 'bio': 0.364, 'age': 0.418} | 6.6s *best*
+[05:32:58] fold0 ep   4/35 loss 1.0344 train 53.1% | val(EMA) 50.0% F1 0.4071 AUC 0.739 | gates {'eeg': 0.205, 'bio': 0.328, 'age': 0.468} | 6.9s *best*
+[05:33:05] fold0 ep   5/35 loss 0.9938 train 55.9% | val(EMA) 53.7% F1 0.4752 AUC 0.747 | gates {'eeg': 0.202, 'bio': 0.319, 'age': 0.478} | 6.9s *best*
+[05:33:09]   sanf_net_cv5 CV out-of-fold        n=1069 acc  59.8% bal  59.5% AUC 0.780 | recall N/MCI/D 77/39/63 | Normal recall: community 91% (n=229) vs SMI 58% (n=171) | AUC impaired: SMI-vs-MCI 0.653, community-vs-MCI 0.891, N-vs-MCI <70 0.695, >=70 0.710
+[05:33:09]   sanf_net_cv5 test (5-fold ens)     n= 118 acc  66.1% bal  66.1% AUC 0.862 | recall N/MCI/D 89/32/77 | Normal recall: community 94% (n=31) vs SMI 80% (n=15) | AUC impaired: SMI-vs-MCI 0.769, community-vs-MCI 0.902, N-vs-MCI <70 0.786, >=70 0.759
+[05:33:12] fold0 ep   6/35 loss 0.9730 train 56.8% | val(EMA) 58.4% F1 0.5477 AUC 0.754 | gates {'eeg': 0.201, 'bio': 0.312, 'age': 0.487} | 6.5s *best*
+[05:33:34] fold0 ep  10/35 loss 0.9157 train 61.0% | val(EMA) 58.4% F1 0.5558 AUC 0.764 | gates {'eeg': 0.219, 'bio': 0.302, 'age': 0.479} | 5.4s *best*
+[05:33:40] fold0 ep  11/35 loss 0.8944 train 61.2% | val(EMA) 60.7% F1 0.5855 AUC 0.764 | gates {'eeg': 0.22, 'bio': 0.316, 'age': 0.465} | 5.5s *best*
+[05:34:34] fold0 ep  21/35 loss 0.8024 train 66.3% | val(EMA) 57.0% F1 0.5539 AUC 0.759 | gates {'eeg': 0.265, 'bio': 0.3, 'age': 0.436} | 5.4s
+[05:35:29] fold0 ep  31/35 loss 0.7303 train 70.4% | val(EMA) 53.3% F1 0.5006 AUC 0.749 | gates {'eeg': 0.282, 'bio': 0.277, 'age': 0.441} | 5.5s
+[05:35:51] fold0: finished. best val F1 0.5855; final EMA val F1 0.4950
+[05:35:52] fold 1: 855 train / 214 held-out recordings
+[05:35:53] fold1: training 142.2k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[05:36:34] fold1 ep   1/35 loss 1.2643 train 37.9% | val(EMA) 38.8% F1 0.1977 AUC 0.499 | gates {'eeg': 0.493, 'bio': 0.245, 'age': 0.262} | 40.6s *best*
+[05:36:39] fold1 ep   2/35 loss 1.0822 train 53.7% | val(EMA) 41.6% F1 0.2601 AUC 0.651 | gates {'eeg': 0.437, 'bio': 0.235, 'age': 0.328} | 5.5s *best*
+[05:36:45] fold1 ep   3/35 loss 1.0690 train 53.4% | val(EMA) 46.7% F1 0.3577 AUC 0.705 | gates {'eeg': 0.37, 'bio': 0.266, 'age': 0.363} | 5.5s *best*
+[05:36:50] fold1 ep   4/35 loss 1.0238 train 54.6% | val(EMA) 52.3% F1 0.4267 AUC 0.722 | gates {'eeg': 0.276, 'bio': 0.349, 'age': 0.374} | 5.6s *best*
+[05:36:56] fold1 ep   5/35 loss 1.0362 train 54.0% | val(EMA) 54.2% F1 0.4749 AUC 0.732 | gates {'eeg': 0.242, 'bio': 0.354, 'age': 0.405} | 5.6s *best*
+[05:37:02] fold1 ep   6/35 loss 0.9797 train 58.3% | val(EMA) 57.9% F1 0.5305 AUC 0.737 | gates {'eeg': 0.229, 'bio': 0.365, 'age': 0.406} | 5.5s *best*
+[05:37:07] fold1 ep   7/35 loss 0.9735 train 56.8% | val(EMA) 57.5% F1 0.5350 AUC 0.740 | gates {'eeg': 0.228, 'bio': 0.383, 'age': 0.389} | 5.5s *best*
+[05:37:13] fold1 ep   8/35 loss 0.9734 train 56.6% | val(EMA) 57.9% F1 0.5425 AUC 0.744 | gates {'eeg': 0.211, 'bio': 0.365, 'age': 0.424} | 5.6s *best*
+[05:37:30] fold1 ep  11/35 loss 0.9291 train 58.0% | val(EMA) 58.4% F1 0.5567 AUC 0.752 | gates {'eeg': 0.238, 'bio': 0.331, 'age': 0.43} | 5.5s *best*
+[05:37:35] fold1 ep  12/35 loss 0.9203 train 58.7% | val(EMA) 58.4% F1 0.5645 AUC 0.758 | gates {'eeg': 0.259, 'bio': 0.332, 'age': 0.409} | 5.4s *best*
+[05:37:52] fold1 ep  15/35 loss 0.8647 train 60.6% | val(EMA) 60.3% F1 0.5853 AUC 0.772 | gates {'eeg': 0.25, 'bio': 0.314, 'age': 0.436} | 5.5s *best*
+[05:38:09] fold1 ep  18/35 loss 0.8201 train 62.4% | val(EMA) 60.7% F1 0.5917 AUC 0.776 | gates {'eeg': 0.258, 'bio': 0.297, 'age': 0.445} | 5.5s *best*
+[05:38:25] fold1 ep  21/35 loss 0.8377 train 61.8% | val(EMA) 59.8% F1 0.5795 AUC 0.779 | gates {'eeg': 0.296, 'bio': 0.284, 'age': 0.421} | 5.5s
+[05:39:21] fold1 ep  31/35 loss 0.7454 train 67.0% | val(EMA) 59.3% F1 0.5709 AUC 0.776 | gates {'eeg': 0.329, 'bio': 0.266, 'age': 0.405} | 5.5s
+[05:39:43] fold1 ep  35/35 loss 0.7432 train 66.6% | val(EMA) 61.2% F1 0.5954 AUC 0.777 | gates {'eeg': 0.341, 'bio': 0.287, 'age': 0.372} | 5.5s *best*
+[05:39:43] fold1: finished. best val F1 0.5954; final EMA val F1 0.5954
+[05:39:44] fold 2: 855 train / 214 held-out recordings
+[05:39:45] fold2: training 142.2k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[05:40:31] fold2 ep   1/35 loss 1.2573 train 38.8% | val(EMA) 43.9% F1 0.3806 AUC 0.652 | gates {'eeg': 0.321, 'bio': 0.281, 'age': 0.398} | 45.9s *best*
+[05:40:37] fold2 ep   2/35 loss 1.1289 train 48.8% | val(EMA) 48.1% F1 0.3829 AUC 0.698 | gates {'eeg': 0.337, 'bio': 0.242, 'age': 0.421} | 5.6s *best*
+[05:40:42] fold2 ep   3/35 loss 1.1017 train 50.1% | val(EMA) 51.9% F1 0.4106 AUC 0.729 | gates {'eeg': 0.29, 'bio': 0.227, 'age': 0.483} | 5.5s *best*
+[05:40:48] fold2 ep   4/35 loss 1.0522 train 50.9% | val(EMA) 51.9% F1 0.4110 AUC 0.757 | gates {'eeg': 0.279, 'bio': 0.224, 'age': 0.497} | 5.5s *best*
+[05:40:53] fold2 ep   5/35 loss 1.0515 train 53.7% | val(EMA) 54.7% F1 0.4679 AUC 0.757 | gates {'eeg': 0.259, 'bio': 0.233, 'age': 0.507} | 5.5s *best*
+[05:40:59] fold2 ep   6/35 loss 1.0280 train 54.6% | val(EMA) 54.7% F1 0.4687 AUC 0.761 | gates {'eeg': 0.273, 'bio': 0.239, 'age': 0.489} | 5.6s *best*
+[05:41:04] fold2 ep   7/35 loss 0.9981 train 56.6% | val(EMA) 55.6% F1 0.4969 AUC 0.755 | gates {'eeg': 0.31, 'bio': 0.238, 'age': 0.451} | 5.5s *best*
+[05:41:10] fold2 ep   8/35 loss 0.9520 train 57.8% | val(EMA) 55.6% F1 0.4978 AUC 0.758 | gates {'eeg': 0.315, 'bio': 0.223, 'age': 0.462} | 5.6s *best*
+[05:41:16] fold2 ep   9/35 loss 0.9746 train 54.8% | val(EMA) 57.5% F1 0.5246 AUC 0.753 | gates {'eeg': 0.302, 'bio': 0.22, 'age': 0.478} | 5.6s *best*
+[05:41:21] fold2 ep  10/35 loss 0.9273 train 59.2% | val(EMA) 58.4% F1 0.5402 AUC 0.753 | gates {'eeg': 0.301, 'bio': 0.231, 'age': 0.468} | 5.5s *best*
+[05:41:27] fold2 ep  11/35 loss 0.9140 train 59.0% | val(EMA) 58.4% F1 0.5421 AUC 0.751 | gates {'eeg': 0.259, 'bio': 0.296, 'age': 0.446} | 5.5s *best*
+[05:41:32] fold2 ep  12/35 loss 0.8895 train 60.1% | val(EMA) 58.9% F1 0.5483 AUC 0.752 | gates {'eeg': 0.25, 'bio': 0.265, 'age': 0.485} | 5.6s *best*
+[05:41:49] fold2 ep  15/35 loss 0.9071 train 61.4% | val(EMA) 58.4% F1 0.5512 AUC 0.758 | gates {'eeg': 0.244, 'bio': 0.295, 'age': 0.461} | 5.5s *best*
+[05:41:55] fold2 ep  16/35 loss 0.8507 train 62.4% | val(EMA) 58.9% F1 0.5576 AUC 0.758 | gates {'eeg': 0.237, 'bio': 0.308, 'age': 0.455} | 5.6s *best*
+[05:42:01] fold2 ep  17/35 loss 0.8433 train 64.7% | val(EMA) 59.3% F1 0.5641 AUC 0.759 | gates {'eeg': 0.272, 'bio': 0.262, 'age': 0.466} | 5.6s *best*
+[05:42:18] fold2 ep  20/35 loss 0.8286 train 62.7% | val(EMA) 59.8% F1 0.5669 AUC 0.764 | gates {'eeg': 0.291, 'bio': 0.28, 'age': 0.429} | 5.6s *best*
+[05:42:23] fold2 ep  21/35 loss 0.8031 train 63.6% | val(EMA) 59.8% F1 0.5635 AUC 0.766 | gates {'eeg': 0.293, 'bio': 0.276, 'age': 0.431} | 5.6s
+[05:43:19] fold2 ep  31/35 loss 0.7480 train 67.6% | val(EMA) 57.0% F1 0.5361 AUC 0.772 | gates {'eeg': 0.318, 'bio': 0.304, 'age': 0.378} | 5.7s
+[05:43:42] fold2: finished. best val F1 0.5669; final EMA val F1 0.5405
+[05:43:42] fold 3: 855 train / 214 held-out recordings
+[05:43:44] fold3: training 142.2k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[05:44:28] fold3 ep   1/35 loss 1.2614 train 41.7% | val(EMA) 49.1% F1 0.3945 AUC 0.637 | gates {'eeg': 0.307, 'bio': 0.385, 'age': 0.308} | 44.5s *best*
+[05:44:34] fold3 ep   2/35 loss 1.1079 train 52.0% | val(EMA) 51.9% F1 0.4149 AUC 0.662 | gates {'eeg': 0.246, 'bio': 0.403, 'age': 0.352} | 5.6s *best*
+[05:44:39] fold3 ep   3/35 loss 1.0691 train 53.7% | val(EMA) 51.9% F1 0.4174 AUC 0.679 | gates {'eeg': 0.235, 'bio': 0.396, 'age': 0.369} | 5.6s *best*
+[05:44:45] fold3 ep   4/35 loss 1.0214 train 54.5% | val(EMA) 51.9% F1 0.4234 AUC 0.712 | gates {'eeg': 0.233, 'bio': 0.356, 'age': 0.411} | 5.5s *best*
+[05:44:50] fold3 ep   5/35 loss 1.0296 train 55.0% | val(EMA) 51.9% F1 0.4380 AUC 0.732 | gates {'eeg': 0.25, 'bio': 0.324, 'age': 0.426} | 5.5s *best*
+[05:44:56] fold3 ep   6/35 loss 1.0000 train 55.9% | val(EMA) 51.9% F1 0.4439 AUC 0.742 | gates {'eeg': 0.252, 'bio': 0.332, 'age': 0.416} | 5.5s *best*
+[05:45:02] fold3 ep   7/35 loss 0.9699 train 57.4% | val(EMA) 53.7% F1 0.4782 AUC 0.745 | gates {'eeg': 0.245, 'bio': 0.357, 'age': 0.398} | 5.5s *best*
+[05:45:07] fold3 ep   8/35 loss 0.9825 train 56.2% | val(EMA) 55.1% F1 0.5075 AUC 0.748 | gates {'eeg': 0.24, 'bio': 0.334, 'age': 0.426} | 5.5s *best*
+[05:45:24] fold3 ep  11/35 loss 0.9025 train 59.6% | val(EMA) 54.2% F1 0.5042 AUC 0.748 | gates {'eeg': 0.26, 'bio': 0.32, 'age': 0.42} | 5.4s
+[05:45:29] fold3 ep  12/35 loss 0.9210 train 59.1% | val(EMA) 55.6% F1 0.5258 AUC 0.753 | gates {'eeg': 0.239, 'bio': 0.306, 'age': 0.455} | 5.5s *best*
+[05:45:34] fold3 ep  13/35 loss 0.9167 train 57.9% | val(EMA) 56.5% F1 0.5359 AUC 0.757 | gates {'eeg': 0.218, 'bio': 0.287, 'age': 0.495} | 5.4s *best*
+[05:45:40] fold3 ep  14/35 loss 0.9034 train 60.3% | val(EMA) 56.5% F1 0.5360 AUC 0.760 | gates {'eeg': 0.224, 'bio': 0.296, 'age': 0.48} | 5.4s *best*
+[05:45:45] fold3 ep  15/35 loss 0.8753 train 61.4% | val(EMA) 57.5% F1 0.5524 AUC 0.766 | gates {'eeg': 0.208, 'bio': 0.28, 'age': 0.512} | 5.4s *best*
+[05:45:51] fold3 ep  16/35 loss 0.8694 train 62.6% | val(EMA) 59.3% F1 0.5723 AUC 0.767 | gates {'eeg': 0.207, 'bio': 0.285, 'age': 0.508} | 5.3s *best*
+[05:46:18] fold3 ep  21/35 loss 0.8149 train 63.4% | val(EMA) 56.1% F1 0.5424 AUC 0.769 | gates {'eeg': 0.272, 'bio': 0.3, 'age': 0.428} | 5.4s
+[10:52:17] fold3 ep  31/35 loss 0.7459 train 67.5% | val(EMA) 55.6% F1 0.5421 AUC 0.759 | gates {'eeg': 0.355, 'bio': 0.284, 'age': 0.361} | 8.6s
+[10:52:52] fold3: finished. best val F1 0.5723; final EMA val F1 0.5379
+[10:52:53] fold 4: 856 train / 213 held-out recordings
+[10:52:55] fold4: training 142.2k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[10:54:02] fold4 ep   1/35 loss 1.3464 train 32.1% | val(EMA) 27.2% F1 0.1661 AUC 0.416 | gates {'eeg': 0.359, 'bio': 0.283, 'age': 0.358} | 66.7s *best*
+[10:54:16] fold4 ep   2/35 loss 1.1391 train 49.3% | val(EMA) 47.9% F1 0.3790 AUC 0.596 | gates {'eeg': 0.37, 'bio': 0.239, 'age': 0.391} | 13.4s *best*
+[10:54:28] fold4 ep   3/35 loss 1.0909 train 51.8% | val(EMA) 51.6% F1 0.4101 AUC 0.670 | gates {'eeg': 0.267, 'bio': 0.32, 'age': 0.413} | 12.2s *best*
+[10:54:54] fold4 ep   5/35 loss 1.0065 train 53.7% | val(EMA) 51.6% F1 0.4218 AUC 0.746 | gates {'eeg': 0.229, 'bio': 0.296, 'age': 0.474} | 13.0s *best*
+[10:55:07] fold4 ep   6/35 loss 0.9963 train 56.2% | val(EMA) 51.6% F1 0.4518 AUC 0.752 | gates {'eeg': 0.206, 'bio': 0.293, 'age': 0.501} | 12.8s *best*
+[10:55:21] fold4 ep   7/35 loss 0.9957 train 56.5% | val(EMA) 51.2% F1 0.4599 AUC 0.753 | gates {'eeg': 0.172, 'bio': 0.283, 'age': 0.545} | 13.4s *best*
+[10:55:33] fold4 ep   8/35 loss 0.9952 train 57.4% | val(EMA) 52.6% F1 0.4874 AUC 0.754 | gates {'eeg': 0.155, 'bio': 0.257, 'age': 0.589} | 12.4s *best*
+[10:56:11] fold4 ep  11/35 loss 0.9351 train 61.2% | val(EMA) 53.1% F1 0.5060 AUC 0.761 | gates {'eeg': 0.149, 'bio': 0.275, 'age': 0.576} | 12.5s *best*
+[10:56:24] fold4 ep  12/35 loss 0.9082 train 61.3% | val(EMA) 53.5% F1 0.5111 AUC 0.762 | gates {'eeg': 0.16, 'bio': 0.278, 'age': 0.561} | 12.5s *best*
+[23:04:06] RESUMING after low-memory stop (A fold4 from epoch 12, then B). num_workers 4->2 to save RAM.
+[23:04:43] train: run 'A_noprotocol_cv5' on NVIDIA GeForce RTX 4050 Laptop GPU | 5 folds | overrides ['train.num_workers=2']
+[23:04:44] fold 0: 855 train / 214 held-out recordings
+[23:04:47] fold0: already finished - skipping
+[23:04:47] fold 1: 855 train / 214 held-out recordings
+[23:04:50] fold1: already finished - skipping
+[23:04:50] fold 2: 855 train / 214 held-out recordings
+[23:04:53] fold2: already finished - skipping
+[23:04:54] fold 3: 855 train / 214 held-out recordings
+[23:04:58] fold3: already finished - skipping
+[23:04:58] fold 4: 856 train / 213 held-out recordings
+[23:05:10] A_noprotocol FAILED, see A_noprotocol/artifacts/*.out
+[23:06:51] Resume failed (Approach11 resume bug: CPU RNG state loaded onto GPU). Fixed in ablation copies only; restarting.
+[23:07:01] train: run 'A_noprotocol_cv5' on NVIDIA GeForce RTX 4050 Laptop GPU | 5 folds | overrides ['train.num_workers=2']
+[23:07:01] fold 0: 855 train / 214 held-out recordings
+[23:07:02] fold0: already finished - skipping
+[23:07:02] fold 1: 855 train / 214 held-out recordings
+[23:07:02] fold1: already finished - skipping
+[23:07:02] fold 2: 855 train / 214 held-out recordings
+[23:07:03] fold2: already finished - skipping
+[23:07:03] fold 3: 855 train / 214 held-out recordings
+[23:07:03] fold3: already finished - skipping
+[23:07:03] fold 4: 856 train / 213 held-out recordings
+[23:07:08] fold4: resumed at epoch 13
+[23:07:40] fold4 ep  14/35 loss 0.9310 train 57.8% | val(EMA) 55.9% F1 0.5450 AUC 0.763 | gates {'eeg': 0.166, 'bio': 0.244, 'age': 0.59} | 31.5s *best*
+[23:07:46] fold4 ep  15/35 loss 0.8680 train 61.8% | val(EMA) 55.9% F1 0.5469 AUC 0.764 | gates {'eeg': 0.184, 'bio': 0.259, 'age': 0.556} | 6.4s *best*
+[23:07:52] fold4 ep  16/35 loss 0.8764 train 61.2% | val(EMA) 55.9% F1 0.5487 AUC 0.761 | gates {'eeg': 0.166, 'bio': 0.256, 'age': 0.578} | 5.5s *best*
+[23:08:16] fold4 ep  19/35 loss 0.8359 train 65.8% | val(EMA) 56.3% F1 0.5547 AUC 0.764 | gates {'eeg': 0.202, 'bio': 0.285, 'age': 0.513} | 9.9s *best*
+[23:08:26] fold4 ep  20/35 loss 0.8156 train 65.4% | val(EMA) 57.7% F1 0.5694 AUC 0.768 | gates {'eeg': 0.208, 'bio': 0.283, 'age': 0.51} | 9.9s *best*
+[23:08:36] fold4 ep  21/35 loss 0.8323 train 67.0% | val(EMA) 55.9% F1 0.5490 AUC 0.766 | gates {'eeg': 0.214, 'bio': 0.3, 'age': 0.486} | 9.8s
+[23:09:46] fold4 ep  27/35 loss 0.8089 train 64.9% | val(EMA) 58.2% F1 0.5722 AUC 0.776 | gates {'eeg': 0.242, 'bio': 0.302, 'age': 0.455} | 9.9s *best*
+[23:09:56] fold4 ep  28/35 loss 0.8247 train 67.0% | val(EMA) 59.2% F1 0.5827 AUC 0.776 | gates {'eeg': 0.245, 'bio': 0.302, 'age': 0.453} | 9.9s *best*
+[23:10:06] fold4 ep  29/35 loss 0.8122 train 65.1% | val(EMA) 59.6% F1 0.5866 AUC 0.778 | gates {'eeg': 0.254, 'bio': 0.294, 'age': 0.452} | 9.9s *best*
+[23:10:26] fold4 ep  31/35 loss 0.7844 train 67.9% | val(EMA) 59.6% F1 0.5873 AUC 0.776 | gates {'eeg': 0.265, 'bio': 0.278, 'age': 0.458} | 9.9s *best*
+[23:10:36] fold4 ep  32/35 loss 0.7709 train 67.3% | val(EMA) 60.1% F1 0.5927 AUC 0.776 | gates {'eeg': 0.271, 'bio': 0.277, 'age': 0.451} | 9.9s *best*
+[23:11:06] fold4: finished. best val F1 0.5927; final EMA val F1 0.5825
+[23:11:07] train: run 'A_noprotocol_cv5' complete -> python scripts/05_evaluate.py --name A_noprotocol_cv5
+[23:11:41] eval 'A_noprotocol_cv5' fold0 [final]: held-out fold acc 52.80% | test acc 58.47%  bal 56.58%  F1 0.5481  AUC 0.7655 | no-overlap acc 55.56%
+[23:12:10] eval 'A_noprotocol_cv5' fold1 [final]: held-out fold acc 61.21% | test acc 64.41%  bal 64.11%  F1 0.6067  AUC 0.8166 | no-overlap acc 62.22%
+[23:12:41] eval 'A_noprotocol_cv5' fold2 [final]: held-out fold acc 57.01% | test acc 61.86%  bal 61.32%  F1 0.5970  AUC 0.8176 | no-overlap acc 60.00%
+[23:13:20] eval 'A_noprotocol_cv5' fold3 [final]: held-out fold acc 55.14% | test acc 64.41%  bal 63.85%  F1 0.6119  AUC 0.8047 | no-overlap acc 61.11%
+[23:14:01] eval 'A_noprotocol_cv5' fold4 [final]: held-out fold acc 59.15% | test acc 61.86%  bal 60.10%  F1 0.5910  AUC 0.8003 | no-overlap acc 61.11%
+[23:14:01] ===== 'A_noprotocol_cv5' [final] (5 folds) =====
+[23:14:01]   CV out-of-fold   (n=1069) : acc 57.06%  bal 56.09%  F1 0.5531  AUC 0.7639
+[23:14:01]   test             mean+/-std : acc 62.20+/-2.18%  F1 0.5909+/-0.0226  AUC 0.8009
+[23:14:01]   test             seed-ens : acc 62.71%  bal 61.78%  F1 0.5818  AUC 0.8263
+[23:14:01]   test_no_overlap  mean+/-std : acc 60.00+/-2.33%  F1 0.5677+/-0.0278  AUC 0.7828
+[23:14:01]   test_no_overlap  seed-ens : acc 60.00%  bal 59.15%  F1 0.5516  AUC 0.8097
+[23:14:01]   test confusion (rows=true N/MCI/D): [[44, 2, 0], [22, 9, 10], [5, 5, 21]] | gates by class: Normal: eeg=0.31, bio=0.16, age=0.54; MCI: eeg=0.33, bio=0.30, age=0.37; Dementia: eeg=0.39, bio=0.37, age=0.24
+[23:14:01]   saved C:\Users\potda\Desktop\Major_Project_Final\Ablation_PhoticConfound\A_noprotocol\artifacts\runs\A_noprotocol_cv5\results.json
+[23:14:10] train: run 'B_eyesclosed_cv5' on NVIDIA GeForce RTX 4050 Laptop GPU | 5 folds | overrides ['train.num_workers=2']
+[23:14:11] fold 0: 855 train / 214 held-out recordings
+[23:14:16] fold0: training 141.4k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[23:14:54] fold0 ep   1/35 loss 1.2834 train 35.7% | val(EMA) 26.2% F1 0.1383 AUC 0.596 | gates {'eeg': 0.439, 'bio': 0.195, 'age': 0.366} | 37.7s *best*
+[23:15:05] fold0 ep   2/35 loss 1.1272 train 48.1% | val(EMA) 50.0% F1 0.3977 AUC 0.672 | gates {'eeg': 0.407, 'bio': 0.146, 'age': 0.446} | 11.1s *best*
+[23:15:16] fold0 ep   3/35 loss 1.0515 train 55.0% | val(EMA) 51.9% F1 0.4094 AUC 0.725 | gates {'eeg': 0.33, 'bio': 0.152, 'age': 0.518} | 10.4s *best*
+[23:15:27] fold0 ep   4/35 loss 1.0249 train 54.4% | val(EMA) 52.8% F1 0.4315 AUC 0.756 | gates {'eeg': 0.29, 'bio': 0.167, 'age': 0.543} | 10.8s *best*
+[23:15:38] fold0 ep   5/35 loss 0.9970 train 56.2% | val(EMA) 55.6% F1 0.5004 AUC 0.763 | gates {'eeg': 0.273, 'bio': 0.186, 'age': 0.541} | 10.9s *best*
+[23:15:49] fold0 ep   6/35 loss 0.9803 train 56.2% | val(EMA) 56.1% F1 0.5266 AUC 0.758 | gates {'eeg': 0.267, 'bio': 0.164, 'age': 0.569} | 11.5s *best*
+[23:16:33] fold0 ep  10/35 loss 0.9167 train 60.4% | val(EMA) 57.0% F1 0.5400 AUC 0.767 | gates {'eeg': 0.251, 'bio': 0.233, 'age': 0.516} | 11.0s *best*
+[23:16:44] fold0 ep  11/35 loss 0.8895 train 59.0% | val(EMA) 57.9% F1 0.5535 AUC 0.767 | gates {'eeg': 0.246, 'bio': 0.234, 'age': 0.52} | 11.2s *best*
+[23:17:30] fold0 ep  15/35 loss 0.8797 train 61.4% | val(EMA) 58.4% F1 0.5631 AUC 0.775 | gates {'eeg': 0.233, 'bio': 0.231, 'age': 0.536} | 10.8s *best*
+[23:17:39] fold0 ep  16/35 loss 0.8579 train 61.4% | val(EMA) 59.8% F1 0.5802 AUC 0.779 | gates {'eeg': 0.239, 'bio': 0.239, 'age': 0.522} | 8.4s *best*
+[23:18:17] fold0 ep  20/35 loss 0.8040 train 65.4% | val(EMA) 60.3% F1 0.5860 AUC 0.785 | gates {'eeg': 0.284, 'bio': 0.232, 'age': 0.485} | 10.8s *best*
+[23:18:27] fold0 ep  21/35 loss 0.8264 train 63.9% | val(EMA) 59.3% F1 0.5752 AUC 0.782 | gates {'eeg': 0.29, 'bio': 0.206, 'age': 0.505} | 10.5s
+[23:20:12] fold0 ep  31/35 loss 0.7428 train 70.9% | val(EMA) 56.5% F1 0.5353 AUC 0.771 | gates {'eeg': 0.303, 'bio': 0.192, 'age': 0.505} | 10.5s
+[23:20:55] fold0: finished. best val F1 0.5860; final EMA val F1 0.5331
+[23:20:56] fold 1: 855 train / 214 held-out recordings
+[23:20:59] fold1: training 141.4k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[23:21:40] fold1 ep   1/35 loss 1.2676 train 37.4% | val(EMA) 40.7% F1 0.3322 AUC 0.602 | gates {'eeg': 0.375, 'bio': 0.207, 'age': 0.418} | 40.7s *best*
+[23:21:51] fold1 ep   2/35 loss 1.1019 train 50.7% | val(EMA) 50.0% F1 0.3915 AUC 0.685 | gates {'eeg': 0.397, 'bio': 0.19, 'age': 0.413} | 10.9s *best*
+[23:22:02] fold1 ep   3/35 loss 1.0471 train 53.1% | val(EMA) 50.0% F1 0.3966 AUC 0.709 | gates {'eeg': 0.316, 'bio': 0.171, 'age': 0.513} | 10.9s *best*
+[23:22:13] fold1 ep   4/35 loss 1.0359 train 53.5% | val(EMA) 50.5% F1 0.4030 AUC 0.721 | gates {'eeg': 0.224, 'bio': 0.195, 'age': 0.581} | 10.9s *best*
+[23:22:24] fold1 ep   5/35 loss 1.0346 train 54.6% | val(EMA) 50.5% F1 0.4034 AUC 0.728 | gates {'eeg': 0.249, 'bio': 0.229, 'age': 0.522} | 10.7s *best*
+[23:22:34] fold1 ep   6/35 loss 0.9904 train 55.5% | val(EMA) 53.7% F1 0.4689 AUC 0.733 | gates {'eeg': 0.252, 'bio': 0.244, 'age': 0.504} | 10.7s *best*
+[23:22:45] fold1 ep   7/35 loss 0.9779 train 55.2% | val(EMA) 56.5% F1 0.5156 AUC 0.736 | gates {'eeg': 0.255, 'bio': 0.308, 'age': 0.437} | 10.5s *best*
+[23:23:06] fold1 ep   9/35 loss 0.9526 train 59.3% | val(EMA) 57.5% F1 0.5440 AUC 0.748 | gates {'eeg': 0.252, 'bio': 0.332, 'age': 0.416} | 10.5s *best*
+[23:23:17] fold1 ep  10/35 loss 0.9250 train 59.4% | val(EMA) 58.4% F1 0.5585 AUC 0.752 | gates {'eeg': 0.259, 'bio': 0.308, 'age': 0.432} | 10.7s *best*
+[23:23:28] fold1 ep  11/35 loss 0.9150 train 59.6% | val(EMA) 57.9% F1 0.5575 AUC 0.757 | gates {'eeg': 0.254, 'bio': 0.308, 'age': 0.438} | 10.8s
+[23:23:39] fold1 ep  12/35 loss 0.9050 train 59.4% | val(EMA) 58.4% F1 0.5677 AUC 0.758 | gates {'eeg': 0.267, 'bio': 0.366, 'age': 0.367} | 10.8s *best*
+[23:24:01] fold1 ep  14/35 loss 0.8799 train 59.4% | val(EMA) 59.3% F1 0.5764 AUC 0.767 | gates {'eeg': 0.284, 'bio': 0.327, 'age': 0.389} | 10.8s *best*
+[23:24:44] fold1 ep  18/35 loss 0.8480 train 60.8% | val(EMA) 59.3% F1 0.5836 AUC 0.770 | gates {'eeg': 0.314, 'bio': 0.317, 'age': 0.369} | 10.6s *best*
+[23:25:16] fold1 ep  21/35 loss 0.8321 train 63.9% | val(EMA) 60.3% F1 0.5864 AUC 0.767 | gates {'eeg': 0.342, 'bio': 0.317, 'age': 0.342} | 10.6s *best*
+[23:26:52] fold1 ep  30/35 loss 0.7326 train 66.9% | val(EMA) 60.7% F1 0.5893 AUC 0.776 | gates {'eeg': 0.365, 'bio': 0.281, 'age': 0.354} | 10.5s *best*
+[23:27:03] fold1 ep  31/35 loss 0.7543 train 67.7% | val(EMA) 60.7% F1 0.5893 AUC 0.776 | gates {'eeg': 0.368, 'bio': 0.279, 'age': 0.353} | 10.7s
+[23:27:45] fold1: finished. best val F1 0.5893; final EMA val F1 0.5804
+[23:27:47] fold 2: 855 train / 214 held-out recordings
+[23:27:49] fold2: training 141.4k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[23:28:31] fold2 ep   1/35 loss 1.3383 train 33.1% | val(EMA) 26.2% F1 0.1383 AUC 0.598 | gates {'eeg': 0.413, 'bio': 0.384, 'age': 0.203} | 42.0s *best*
+[23:28:42] fold2 ep   2/35 loss 1.1205 train 48.6% | val(EMA) 50.0% F1 0.4068 AUC 0.709 | gates {'eeg': 0.407, 'bio': 0.324, 'age': 0.269} | 10.8s *best*
+[23:28:53] fold2 ep   3/35 loss 1.0984 train 51.8% | val(EMA) 51.4% F1 0.4113 AUC 0.745 | gates {'eeg': 0.336, 'bio': 0.345, 'age': 0.319} | 10.6s *best*
+[23:29:04] fold2 ep   4/35 loss 1.0773 train 52.4% | val(EMA) 54.7% F1 0.4478 AUC 0.759 | gates {'eeg': 0.327, 'bio': 0.362, 'age': 0.312} | 10.7s *best*
+[23:29:15] fold2 ep   5/35 loss 1.0451 train 52.7% | val(EMA) 54.7% F1 0.4800 AUC 0.769 | gates {'eeg': 0.305, 'bio': 0.326, 'age': 0.369} | 10.7s *best*
+[23:29:36] fold2 ep   7/35 loss 0.9710 train 58.1% | val(EMA) 55.6% F1 0.5069 AUC 0.764 | gates {'eeg': 0.287, 'bio': 0.325, 'age': 0.388} | 10.5s *best*
+[23:29:46] fold2 ep   8/35 loss 0.9762 train 55.4% | val(EMA) 56.5% F1 0.5152 AUC 0.761 | gates {'eeg': 0.313, 'bio': 0.302, 'age': 0.385} | 10.6s *best*
+[23:29:57] fold2 ep   9/35 loss 0.9524 train 57.0% | val(EMA) 57.0% F1 0.5201 AUC 0.759 | gates {'eeg': 0.316, 'bio': 0.3, 'age': 0.383} | 10.5s *best*
+[23:30:08] fold2 ep  10/35 loss 0.9330 train 58.3% | val(EMA) 57.5% F1 0.5253 AUC 0.761 | gates {'eeg': 0.31, 'bio': 0.286, 'age': 0.404} | 10.5s *best*
+[23:30:18] fold2 ep  11/35 loss 0.9218 train 57.2% | val(EMA) 58.4% F1 0.5489 AUC 0.765 | gates {'eeg': 0.287, 'bio': 0.283, 'age': 0.43} | 10.2s *best*
+[23:30:50] fold2 ep  14/35 loss 0.9263 train 60.0% | val(EMA) 59.8% F1 0.5660 AUC 0.765 | gates {'eeg': 0.275, 'bio': 0.27, 'age': 0.456} | 10.6s *best*
+[23:31:34] fold2 ep  21/35 loss 0.7995 train 64.3% | val(EMA) 58.4% F1 0.5582 AUC 0.765 | gates {'eeg': 0.325, 'bio': 0.245, 'age': 0.43} | 5.3s
+[23:31:58] fold2 ep  24/35 loss 0.8416 train 65.0% | val(EMA) 59.3% F1 0.5740 AUC 0.765 | gates {'eeg': 0.345, 'bio': 0.245, 'age': 0.41} | 10.6s *best*
+[23:32:08] fold2 ep  25/35 loss 0.8204 train 63.6% | val(EMA) 59.3% F1 0.5767 AUC 0.767 | gates {'eeg': 0.36, 'bio': 0.246, 'age': 0.394} | 10.2s *best*
+[23:33:05] fold2 ep  31/35 loss 0.7637 train 67.2% | val(EMA) 59.3% F1 0.5690 AUC 0.768 | gates {'eeg': 0.352, 'bio': 0.268, 'age': 0.381} | 10.4s
+[23:33:26] fold2 ep  33/35 loss 0.7787 train 66.0% | val(EMA) 60.3% F1 0.5788 AUC 0.767 | gates {'eeg': 0.353, 'bio': 0.275, 'age': 0.372} | 10.5s *best*
+[23:33:37] fold2 ep  34/35 loss 0.7713 train 66.2% | val(EMA) 60.3% F1 0.5795 AUC 0.767 | gates {'eeg': 0.354, 'bio': 0.276, 'age': 0.371} | 10.4s *best*
+[23:33:47] fold2: finished. best val F1 0.5795; final EMA val F1 0.5795
+[23:33:48] fold 3: 855 train / 214 held-out recordings
+[23:33:51] fold3: training 141.4k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[23:34:21] fold3 ep   1/35 loss 1.2200 train 41.4% | val(EMA) 41.1% F1 0.2508 AUC 0.671 | gates {'eeg': 0.428, 'bio': 0.266, 'age': 0.306} | 30.5s *best*
+[23:34:32] fold3 ep   2/35 loss 1.0917 train 51.8% | val(EMA) 47.7% F1 0.3983 AUC 0.724 | gates {'eeg': 0.371, 'bio': 0.316, 'age': 0.313} | 10.2s *best*
+[23:34:42] fold3 ep   3/35 loss 1.0807 train 53.9% | val(EMA) 51.4% F1 0.4391 AUC 0.740 | gates {'eeg': 0.295, 'bio': 0.339, 'age': 0.366} | 10.0s *best*
+[23:34:52] fold3 ep   4/35 loss 1.0424 train 53.8% | val(EMA) 50.5% F1 0.4512 AUC 0.745 | gates {'eeg': 0.318, 'bio': 0.307, 'age': 0.375} | 10.1s *best*
+[23:35:02] fold3 ep   5/35 loss 1.0011 train 55.8% | val(EMA) 51.4% F1 0.4735 AUC 0.747 | gates {'eeg': 0.319, 'bio': 0.295, 'age': 0.386} | 10.1s *best*
+[23:35:12] fold3 ep   6/35 loss 0.9978 train 55.8% | val(EMA) 54.7% F1 0.5162 AUC 0.747 | gates {'eeg': 0.286, 'bio': 0.253, 'age': 0.461} | 10.1s *best*
+[23:35:33] fold3 ep   8/35 loss 0.9648 train 56.0% | val(EMA) 55.1% F1 0.5197 AUC 0.748 | gates {'eeg': 0.285, 'bio': 0.228, 'age': 0.486} | 10.1s *best*
+[23:35:44] fold3 ep   9/35 loss 0.9402 train 57.5% | val(EMA) 55.1% F1 0.5204 AUC 0.747 | gates {'eeg': 0.31, 'bio': 0.244, 'age': 0.446} | 10.8s *best*
+[23:36:04] fold3 ep  11/35 loss 0.9335 train 57.9% | val(EMA) 54.2% F1 0.5107 AUC 0.745 | gates {'eeg': 0.324, 'bio': 0.218, 'age': 0.458} | 10.0s
+[23:36:24] fold3 ep  13/35 loss 0.9225 train 58.0% | val(EMA) 55.1% F1 0.5232 AUC 0.749 | gates {'eeg': 0.296, 'bio': 0.244, 'age': 0.46} | 10.0s *best*
+[23:36:34] fold3 ep  14/35 loss 0.9056 train 59.9% | val(EMA) 56.1% F1 0.5324 AUC 0.751 | gates {'eeg': 0.306, 'bio': 0.252, 'age': 0.442} | 10.5s *best*
+[23:36:43] fold3 ep  15/35 loss 0.8811 train 60.4% | val(EMA) 56.1% F1 0.5346 AUC 0.750 | gates {'eeg': 0.296, 'bio': 0.234, 'age': 0.47} | 8.3s *best*
+[23:36:48] fold3 ep  16/35 loss 0.8786 train 61.2% | val(EMA) 56.5% F1 0.5388 AUC 0.750 | gates {'eeg': 0.321, 'bio': 0.249, 'age': 0.429} | 5.3s *best*
+[23:36:54] fold3 ep  17/35 loss 0.8691 train 62.5% | val(EMA) 57.9% F1 0.5545 AUC 0.751 | gates {'eeg': 0.344, 'bio': 0.265, 'age': 0.391} | 5.4s *best*
+[23:36:59] fold3 ep  18/35 loss 0.8603 train 63.7% | val(EMA) 58.4% F1 0.5628 AUC 0.749 | gates {'eeg': 0.356, 'bio': 0.283, 'age': 0.361} | 5.3s *best*
+[23:37:15] fold3 ep  21/35 loss 0.8619 train 63.1% | val(EMA) 59.8% F1 0.5832 AUC 0.751 | gates {'eeg': 0.385, 'bio': 0.274, 'age': 0.342} | 5.3s *best*
+[23:38:08] fold3 ep  31/35 loss 0.7889 train 63.9% | val(EMA) 53.7% F1 0.5292 AUC 0.728 | gates {'eeg': 0.443, 'bio': 0.296, 'age': 0.261} | 5.3s
+[23:38:30] fold3: finished. best val F1 0.5832; final EMA val F1 0.5498
+[23:38:30] fold 4: 856 train / 213 held-out recordings
+[23:38:31] fold4: training 141.4k params, 35 epochs x 53 steps, modalities ['eeg', 'bio', 'age']
+[23:38:51] fold4 ep   1/35 loss 1.3036 train 33.0% | val(EMA) 18.8% F1 0.1489 AUC 0.408 | gates {'eeg': 0.489, 'bio': 0.259, 'age': 0.252} | 19.4s *best*
+[23:38:56] fold4 ep   2/35 loss 1.1108 train 49.4% | val(EMA) 42.7% F1 0.2841 AUC 0.708 | gates {'eeg': 0.442, 'bio': 0.258, 'age': 0.301} | 5.3s *best*
+[23:39:01] fold4 ep   3/35 loss 1.0689 train 51.5% | val(EMA) 48.4% F1 0.3736 AUC 0.744 | gates {'eeg': 0.343, 'bio': 0.291, 'age': 0.366} | 5.3s *best*
+[23:39:07] fold4 ep   4/35 loss 1.0329 train 55.7% | val(EMA) 48.8% F1 0.4092 AUC 0.750 | gates {'eeg': 0.298, 'bio': 0.335, 'age': 0.367} | 5.3s *best*
+[23:39:12] fold4 ep   5/35 loss 1.0060 train 55.2% | val(EMA) 51.6% F1 0.4542 AUC 0.750 | gates {'eeg': 0.263, 'bio': 0.293, 'age': 0.444} | 5.3s *best*
+[23:39:17] fold4 ep   6/35 loss 0.9572 train 57.0% | val(EMA) 52.1% F1 0.4782 AUC 0.750 | gates {'eeg': 0.264, 'bio': 0.302, 'age': 0.435} | 5.3s *best*
+[23:39:23] fold4 ep   7/35 loss 1.0230 train 55.3% | val(EMA) 53.1% F1 0.4894 AUC 0.752 | gates {'eeg': 0.272, 'bio': 0.308, 'age': 0.42} | 5.4s *best*
+[23:39:45] fold4 ep  11/35 loss 0.9612 train 58.5% | val(EMA) 52.6% F1 0.4932 AUC 0.753 | gates {'eeg': 0.245, 'bio': 0.352, 'age': 0.402} | 5.4s *best*
+[23:39:50] fold4 ep  12/35 loss 0.9493 train 58.7% | val(EMA) 53.5% F1 0.5062 AUC 0.757 | gates {'eeg': 0.245, 'bio': 0.34, 'age': 0.415} | 5.4s *best*
+[23:40:07] fold4 ep  15/35 loss 0.8941 train 62.6% | val(EMA) 54.0% F1 0.5092 AUC 0.754 | gates {'eeg': 0.231, 'bio': 0.414, 'age': 0.355} | 5.5s *best*
+[23:40:12] fold4 ep  16/35 loss 0.9115 train 61.0% | val(EMA) 54.5% F1 0.5169 AUC 0.754 | gates {'eeg': 0.228, 'bio': 0.396, 'age': 0.375} | 5.5s *best*
+[23:40:23] fold4 ep  18/35 loss 0.8840 train 62.7% | val(EMA) 54.0% F1 0.5175 AUC 0.746 | gates {'eeg': 0.239, 'bio': 0.492, 'age': 0.269} | 5.6s *best*
+[23:40:35] fold4 ep  20/35 loss 0.8664 train 62.5% | val(EMA) 55.4% F1 0.5320 AUC 0.766 | gates {'eeg': 0.209, 'bio': 0.4, 'age': 0.391} | 5.6s *best*
+[23:40:40] fold4 ep  21/35 loss 0.8588 train 63.6% | val(EMA) 55.9% F1 0.5388 AUC 0.768 | gates {'eeg': 0.207, 'bio': 0.409, 'age': 0.384} | 5.6s *best*
+[23:41:03] fold4 ep  25/35 loss 0.8375 train 63.4% | val(EMA) 56.8% F1 0.5467 AUC 0.760 | gates {'eeg': 0.231, 'bio': 0.465, 'age': 0.304} | 5.6s *best*
+[23:41:09] fold4 ep  26/35 loss 0.8468 train 63.3% | val(EMA) 57.7% F1 0.5592 AUC 0.760 | gates {'eeg': 0.237, 'bio': 0.467, 'age': 0.296} | 5.7s *best*
+[23:41:26] fold4 ep  29/35 loss 0.8346 train 65.0% | val(EMA) 58.7% F1 0.5688 AUC 0.763 | gates {'eeg': 0.241, 'bio': 0.453, 'age': 0.306} | 5.7s *best*
+[23:41:37] fold4 ep  31/35 loss 0.8489 train 63.8% | val(EMA) 57.7% F1 0.5619 AUC 0.761 | gates {'eeg': 0.248, 'bio': 0.471, 'age': 0.281} | 5.8s
+[23:41:43] fold4 ep  32/35 loss 0.8084 train 66.2% | val(EMA) 59.2% F1 0.5766 AUC 0.767 | gates {'eeg': 0.242, 'bio': 0.437, 'age': 0.321} | 5.7s *best*
+[23:41:49] fold4 ep  33/35 loss 0.8442 train 62.9% | val(EMA) 59.6% F1 0.5806 AUC 0.765 | gates {'eeg': 0.245, 'bio': 0.454, 'age': 0.301} | 5.7s *best*
+[23:42:00] fold4: finished. best val F1 0.5806; final EMA val F1 0.5806
+[23:42:01] train: run 'B_eyesclosed_cv5' complete -> python scripts/05_evaluate.py --name B_eyesclosed_cv5
+[23:42:37] eval 'B_eyesclosed_cv5' fold0 [final]: held-out fold acc 57.01% | test acc 61.86%  bal 59.22%  F1 0.5862  AUC 0.7675 | no-overlap acc 62.22%
+[23:43:11] eval 'B_eyesclosed_cv5' fold1 [final]: held-out fold acc 59.81% | test acc 61.86%  bal 62.55%  F1 0.5828  AUC 0.7924 | no-overlap acc 58.89%
+[23:43:41] eval 'B_eyesclosed_cv5' fold2 [final]: held-out fold acc 60.28% | test acc 64.41%  bal 63.85%  F1 0.6155  AUC 0.8163 | no-overlap acc 64.44%
+[23:44:13] eval 'B_eyesclosed_cv5' fold3 [final]: held-out fold acc 55.61% | test acc 61.02%  bal 61.21%  F1 0.5883  AUC 0.7927 | no-overlap acc 61.11%
+[23:44:44] eval 'B_eyesclosed_cv5' fold4 [final]: held-out fold acc 59.62% | test acc 61.86%  bal 61.67%  F1 0.5925  AUC 0.8018 | no-overlap acc 61.11%
+[23:44:44] ===== 'B_eyesclosed_cv5' [final] (5 folds) =====
+[23:44:44]   CV out-of-fold   (n=1069) : acc 58.47%  bal 58.11%  F1 0.5690  AUC 0.7562
+[23:44:44]   test             mean+/-std : acc 62.20+/-1.15%  F1 0.5930+/-0.0117  AUC 0.7941
+[23:44:44]   test             seed-ens : acc 65.25%  bal 65.10%  F1 0.6115  AUC 0.8175
+[23:44:44]   test_no_overlap  mean+/-std : acc 61.56+/-1.81%  F1 0.5907+/-0.0205  AUC 0.7819
+[23:44:44]   test_no_overlap  seed-ens : acc 62.22%  bal 62.24%  F1 0.5812  AUC 0.8062
+[23:44:44]   test confusion (rows=true N/MCI/D): [[43, 2, 1], [20, 10, 11], [5, 2, 24]] | gates by class: Normal: eeg=0.38, bio=0.14, age=0.48; MCI: eeg=0.34, bio=0.30, age=0.36; Dementia: eeg=0.35, bio=0.41, age=0.24
+[23:44:44]   saved C:\Users\potda\Desktop\Major_Project_Final\Ablation_PhoticConfound\B_eyesclosed\artifacts\runs\B_eyesclosed_cv5\results.json
+[23:44:51] analyze_oof: 'A_noprotocol_cv5' - rebuilding out-of-fold predictions from 5 fold models
+[23:45:16]   A_noprotocol_cv5 CV out-of-fold    n=1069 acc  57.1% bal  56.1% AUC 0.764 | recall N/MCI/D 78/36/54 | Normal recall: community 90% (n=229) vs SMI 64% (n=171) | AUC impaired: SMI-vs-MCI 0.649, community-vs-MCI 0.852, N-vs-MCI <70 0.668, >=70 0.651
+[23:45:16]   A_noprotocol_cv5 test (5-fold ens) n= 118 acc  62.7% bal  61.8% AUC 0.826 | recall N/MCI/D 96/22/68 | Normal recall: community 100% (n=31) vs SMI 87% (n=15) | AUC impaired: SMI-vs-MCI 0.792, community-vs-MCI 0.848, N-vs-MCI <70 0.720, >=70 0.781
+[23:45:16] analyze_oof: 'B_eyesclosed_cv5' - rebuilding out-of-fold predictions from 5 fold models
+[23:45:31]   B_eyesclosed_cv5 CV out-of-fold    n=1069 acc  58.5% bal  58.1% AUC 0.756 | recall N/MCI/D 77/36/61 | Normal recall: community 87% (n=229) vs SMI 64% (n=171) | AUC impaired: SMI-vs-MCI 0.650, community-vs-MCI 0.842, N-vs-MCI <70 0.632, >=70 0.681
+[23:45:31]   B_eyesclosed_cv5 test (5-fold ens) n= 118 acc  65.3% bal  65.1% AUC 0.818 | recall N/MCI/D 93/24/77 | Normal recall: community 97% (n=31) vs SMI 87% (n=15) | AUC impaired: SMI-vs-MCI 0.766, community-vs-MCI 0.832, N-vs-MCI <70 0.706, >=70 0.707

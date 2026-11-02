@@ -1,0 +1,102 @@
+{
+ "n_recordings": 1187,
+ "n_with_final_paused_event": 1186,
+ "n_with_pauses": 293,
+ "abs_offset_raw_s_all": {
+  "median": 4.0,
+  "p90": 39.5,
+  "max": 678.0
+ },
+ "abs_offset_corr_s_all": {
+  "median": 3.0,
+  "p90": 6.0,
+  "max": 87.0
+ },
+ "abs_offset_raw_s_paused_recs": {
+  "median": 33.0,
+  "p90": 90.0,
+  "max": 678.0
+ },
+ "abs_offset_corr_s_paused_recs": {
+  "median": 3.0,
+  "p90": 6.0,
+  "max": 87.0
+ },
+ "by_group": [
+  {
+   "group": "Dementia",
+   "n": 311,
+   "age_mean": 76.637,
+   "age_sd": 8.079,
+   "has_photic": 0.923,
+   "has_eo": 0.801,
+   "dur_min": 14.002,
+   "clean_min": 10.36,
+   "ec_min": 6.643,
+   "eo_min": 2.25,
+   "photic_min": 0.758,
+   "hv_min": 0.14,
+   "unknown_min": 0.568
+  },
+  {
+   "group": "MCI",
+   "n": 417,
+   "age_mean": 73.753,
+   "age_sd": 7.839,
+   "has_photic": 0.921,
+   "has_eo": 0.866,
+   "dur_min": 13.781,
+   "clean_min": 10.172,
+   "ec_min": 5.756,
+   "eo_min": 2.622,
+   "photic_min": 0.764,
+   "hv_min": 0.216,
+   "unknown_min": 0.814
+  },
+  {
+   "group": "Normal: SMI",
+   "n": 186,
+   "age_mean": 69.602,
+   "age_sd": 9.293,
+   "has_photic": 0.898,
+   "has_eo": 0.839,
+   "dur_min": 13.797,
+   "clean_min": 10.405,
+   "ec_min": 5.643,
+   "eo_min": 2.685,
+   "photic_min": 0.742,
+   "hv_min": 0.403,
+   "unknown_min": 0.933
+  },
+  {
+   "group": "Normal: community",
+   "n": 260,
+   "age_mean": 61.727,
+   "age_sd": 8.265,
+   "has_photic": 0.119,
+   "has_eo": 0.631,
+   "dur_min": 10.21,
+   "clean_min": 8.329,
+   "ec_min": 5.697,
+   "eo_min": 2.142,
+   "photic_min": 0.1,
+   "hv_min": 0.012,
+   "unknown_min": 0.377
+  },
+  {
+   "group": "Normal: other",
+   "n": 13,
+   "age_mean": 68.385,
+   "age_sd": 7.24,
+   "has_photic": 0.692,
+   "has_eo": 0.846,
+   "dur_min": 13.156,
+   "clean_min": 10.26,
+   "ec_min": 5.529,
+   "eo_min": 2.721,
+   "photic_min": 0.581,
+   "hv_min": 0.254,
+   "unknown_min": 1.176
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+# Approach 1 -- EEGNet backbone on the raw signal.
+# Measured on an RTX 4050 Laptop (6.44 GB): 2322 samp/s, 0.52 GB at batch 64.
+# ~6 min for 100 epochs at train_repeats=8; ~30 min for all 5 seeds.
+
+approach: eegnet_big20s
+
+paths:
+  dataset_root: null          # null -> $CAUEEG_ROOT, else search upward for caueeg-dataset/
+  cache_dir: null             # null -> ../_cache/eeg_fp16  (shared with other approaches)
+  output_dir: outputs
+
+data:
+  task: dementia              # dementia | dementia-no-overlap
+  crop_seconds: 20.0          # v3: 2x context per crop
+  t0_seconds: 10.0            # skip sensor settling; the paper uses T0=2000 and Phase 1 did not
+  train_views: 1              # one fresh random crop per sample
+  eval_views: 8               # 8 deterministic crops, logit-averaged (TTA)
+  train_repeats: 8            # 950 x 8 = 7600 samples/epoch, all freshly cropped each epoch
+  sampling: auto
+  normalize: trainset         # trainset (paper) | percrop (Phase-1 behaviour, ablation only)
+  noise_awgn: 0.02            # paper Sec 3.2 additive white Gaussian noise
+  noise_mwgn: 0.02            # paper Sec 3.2 multiplicative white Gaussian noise
+
+model:
+  num_classes: 3
+  n_branches: 1               # 1 = one encoder. Set 4 to reproduce the Phase-2 notes' version.
+  F1: 16                      # v2: 2x wider -- v1 underfit (train acc 62-74%)
+  D: 2
+  F2: 32
+  kern_len: 101               # fs/2 at 200 Hz
+  dropout: 0.25
+  embed_dim: 64
+  head_hidden: 64
+  head_dropout: 0.5
+  use_age: true               # SET false FOR THE AGE ABLATION -- report both
+  norm: batch                 # batch is fine here; batch_size is 64
+
+train:
+  epochs: 80                  # v2: cosine fully anneals (v1 stopped at ep 46-92, LR still high)
+  batch_size: 64
+  eval_batch_size: 32         # eval carries 8 views per item
+  lr: 1.0e-3
+  lr_min: 1.0e-6
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  label_smoothing: 0.0
+  amp: true
+  min_epochs: 15
+  early_stop_patience: 80     # v2: effectively off; best.pt still chosen by val macro-F1
+  select_metric: macro_f1     # NOT accuracy: classes are 367/334/249
+  deterministic: false
+  seed: 0
+  seeds: [0, 1, 2, 3, 4]
+
+runtime:
+  num_workers: 4              # lower to 0 if Windows DataLoader workers misbehave

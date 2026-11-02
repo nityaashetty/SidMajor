@@ -1,0 +1,58 @@
+\section{Literature Survey}
+
+We reviewed seven studies across three modality groups: MRI, EEG and voice (Table~\ref{tab:lit}). MRI
+studies report very high accuracies but rely on expensive imaging, are often evaluated on 2D slices, and
+rarely validate across datasets. EEG-based approaches remain underexplored by comparison, and none of the
+reviewed studies validates on an independent dataset.
+
+\begin{table}[H]
+\centering
+\caption{Literature survey: seven studies across three modality groups}
+\label{tab:lit}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.6cm}
+  >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.0cm} >{\raggedright\arraybackslash}X@{}}
+\toprule
+Study & Data & Method & Reported result & Limitation\\
+\midrule
+\multicolumn{5}{@{}l}{\textit{MRI-based approaches}}\\
+El-Assy et al. (2024) & ADNI & Dual CNN branches with different filter sizes, concatenated; 3/4/5-class & 99.43\%, 99.57\%, 99.13\% & Possible overfitting; no cross-dataset validation; limited explainability\\
+Odimayo et al. (2024) & ADNI + OASIS & Structure-focused CNN, gamma correction, midsagittal and parasagittal planes & 97--98\% & Specific MRI planes only; high computational cost; limited generalisation testing\\
+Mousavi et al. (2025) & ADNI-derived MRI (6,735 images) & Transfer learning (VGG16, VGG19, Xception, InceptionResNetV2), majority-vote ensemble & 98.52\% & Derived dataset may lack clinical diversity; mostly 2D slice-based\\
+\midrule
+\multicolumn{5}{@{}l}{\textit{EEG-based approaches}}\\
+\citet{kim2023caueeg} & CAUEEG & CEEDNet: end-to-end 1D/2D CNN and transformer family on raw EEG with age & 70.2\% single, 74.7\% ensemble (three-class, per recording) & Single dataset; large models (11--87M parameters); limited interpretability\\
+MDPI EEG dataset (2023) & AD, FTD and healthy EEG & Dataset publication & Not a model paper & No benchmark model; limited size\\
+Jungrungrueang et al. (2024) & Resting-state EEG & Dynamic EEG connectivity features with CNN classification & 93.6\% (multi-class) & EEG only; no MRI integration\\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Other modalities}}\\
+vkola-lab & Framingham Heart Study voice recordings & CNN + LSTM on audio, minimal feature engineering & Binary classification & No MRI comparison; restricted clinical data\\
+\bottomrule
+\end{tabularx}\\[2pt]
+\parbox{\textwidth}{\scriptsize ADNI: Alzheimer's Disease Neuroimaging Initiative; OASIS: Open Access Series of
+Imaging Studies; CNN: convolutional neural network; LSTM: long short-term memory; AD: Alzheimer's disease; FTD:
+frontotemporal dementia. \todo{add full APA references for the MRI, MDPI, Jungrungrueang and vkola-lab studies}}
+\end{table}
+
+\textbf{EEG markers of cognitive decline.} Spectral slowing (theta/alpha and delta/alpha ratios), lower alpha
+peak frequency, reduced alpha reactivity to eye opening and loss of inter-regional coherence are consistently
+reported in Alzheimer's disease and, more weakly, in MCI \citep{jeong2004eeg,dauwels2010diagnosis,babiloni2020measures}.
+
+\textbf{Machine learning on CAUEEG.} \citet{kim2023caueeg} released CAUEEG together with CEEDNet, trained on
+random 10\,s crops with age as an input. CEFA-Net \citep{cefanet2026} combines a three-scale CNN with a branch
+of clinical EEG ratios and a focal loss, reporting 81.0\% with per-segment evaluation and 73.8\% on a
+patient-disjoint test. A microstate-based support vector machine reports 89\% \citep{hasan2025msaf}. These
+numbers use different evaluation units and splits and are not directly comparable. \citet{geneeg2025}
+contrasted CAUEEG with GENEEG, a general-practice cohort, and found poor transfer between the two and strongly
+overlapping MCI and control feature distributions. Compact architectures such as EEGNet
+\citep{lawhern2018eegnet} are common baselines for small clinical datasets.
+
+\textbf{Normative modelling and shortcut learning.} Normative models describe each subject as a deviation from
+a reference population conditioned on covariates such as age \citep{marquand2016normative}, which separates
+normal ageing from pathology. Classifiers frequently exploit acquisition artifacts instead of the target
+signal \citep{geirhos2020shortcut}; in medical imaging, scanner or protocol differences between cohorts are a
+well-known source \citep{roberts2021pitfalls,varoquaux2022machine}.
+
+\textbf{Research gap.} No reviewed work combines (i) a lightweight EEG model that uses recording-state
+information, (ii) a comparison with strong baselines under an identical, patient-disjoint protocol, and
+(iii) validation on independent datasets. This work addresses all three.

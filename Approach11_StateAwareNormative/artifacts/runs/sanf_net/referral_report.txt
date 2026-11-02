@@ -1,0 +1,91 @@
+SELECTIVE PREDICTION - run 'sanf_net' [final], 3-model ensemble
+Confidence = highest class probability. Cut-offs calibrated on VAL, applied unchanged to test.
+
+=== test (n=118) ===
+ target cut-off  referred  acc kept  F1 kept  recall kept N/MCI/D    referred by true class N/MCI/D  MCI referred
+     0%  -1.000      0.0%     72.9%   0.7088           96/ 44/ 77                           0/ 0/ 0    0.0%
+    10%   0.431      5.1%     73.2%   0.7050           96/ 41/ 80                           1/ 4/ 1    9.8%
+    20%   0.444     12.7%     75.7%   0.7135          100/ 34/ 86                           3/ 9/ 3   22.0%
+    30%   0.455     19.5%     76.8%   0.6999          100/ 26/ 92                           3/14/ 6   34.1%
+    40%   0.471     26.3%     74.7%   0.5886          100/  5/ 91                           3/20/ 8   48.8%
+    50%   0.518     35.6%     76.3%   0.5641          100/  0/ 89                           5/25/12   61.0%
+  Confusion, no referral:   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        44     2     0         0     46    95.7%
+    MCI           14    18     9         0     41    43.9%
+    Dementia       3     4    24         0     31    77.4%
+    Total         61    24    33         0    118
+
+  Confusion, 20% target referral (cut-off 0.444):   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        43     0     0         3     46   100.0%
+    MCI           13    11     8         9     41    34.4%
+    Dementia       2     2    24         3     31    85.7%
+    Total         58    13    32        15    118
+
+  Confusion, 30% target referral (cut-off 0.455):   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        43     0     0         3     46   100.0%
+    MCI           13     7     7        14     41    25.9%
+    Dementia       2     0    23         6     31    92.0%
+    Total         58     7    30        23    118
+
+  Normal vs impaired (MCI+Dementia), no referral: acc 83.9% | impaired caught 76.4% (55/72) | normals kept 95.7% (44/46) | AUC 0.923
+
+=== test_no_overlap (n=90) ===
+ target cut-off  referred  acc kept  F1 kept  recall kept N/MCI/D    referred by true class N/MCI/D  MCI referred
+     0%  -1.000      0.0%     72.2%   0.7024           97/ 45/ 73                           0/ 0/ 0    0.0%
+    10%   0.431      5.6%     72.9%   0.7058           97/ 43/ 76                           1/ 3/ 1    9.1%
+    20%   0.444     14.4%     75.3%   0.7136          100/ 36/ 84                           2/ 8/ 3   24.2%
+    30%   0.455     18.9%     75.3%   0.6916          100/ 27/ 89                           2/11/ 4   33.3%
+    40%   0.471     26.7%     72.7%   0.5783          100/  6/ 88                           2/16/ 6   48.5%
+    50%   0.518     36.7%     73.7%   0.5409          100/  0/ 83                           3/20/10   60.6%
+  Confusion, no referral:   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        34     1     0         0     35    97.1%
+    MCI           11    15     7         0     33    45.5%
+    Dementia       3     3    16         0     22    72.7%
+    Total         48    19    23         0     90
+
+  Confusion, 20% target referral (cut-off 0.444):   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        33     0     0         2     35   100.0%
+    MCI           10     9     6         8     33    36.0%
+    Dementia       2     1    16         3     22    84.2%
+    Total         45    10    22        13     90
+
+  Confusion, 30% target referral (cut-off 0.455):   rows = true class, columns = model output
+                   N   MCI   Dem  Referred  Total   recall (of kept)
+    Normal        33     0     0         2     35   100.0%
+    MCI           10     6     6        11     33    27.3%
+    Dementia       2     0    16         4     22    88.9%
+    Total         45     6    22        17     90
+
+  Normal vs impaired (MCI+Dementia), no referral: acc 83.3% | impaired caught 74.5% (41/55) | normals kept 97.1% (34/35) | AUC 0.923
+
+=== REFERRED TEST RECORDINGS at 30% val-calibrated rate (confidence <= 0.455): 23 of 118 ===
+  # serial  age  true  pred   P(N)  P(MCI)   P(D)   conf  subtype
+  1  00551   74   MCI     N   0.40    0.40   0.21  0.399  mci_amnestic, mci_amnestic_rf  (would be wrong)
+  2  00049   71     N     N   0.41    0.36   0.24  0.405  cb_normal
+  3  01213   76     D   MCI   0.38    0.42   0.20  0.416  ad, load  (would be wrong)
+  4  00953   75   MCI   MCI   0.42    0.42   0.16  0.420  mci_vascular
+  5  00243   65   MCI   MCI   0.34    0.42   0.24  0.423  mci_ad, mci_amnestic, mci_amnestic_ef
+  6  01387   83   MCI   MCI   0.19    0.42   0.38  0.424  mci_amnestic, mci_amnestic_rf
+  7  00286   61     D   MCI   0.39    0.43   0.18  0.431  ad, eoad  (would be wrong)
+  8  00169   74   MCI   MCI   0.34    0.43   0.23  0.433  mci_amnestic, mci_multi_domain
+  9  01057   78   MCI     D   0.15    0.41   0.44  0.437  mci_amnestic, mci_amnestic_ef  (would be wrong)
+ 10  00659   79     N   MCI   0.23    0.44   0.33  0.438  smi  (would be wrong)
+ 11  00475   70   MCI   MCI   0.44    0.44   0.13  0.439  mci_amnestic
+ 12  01048   75   MCI   MCI   0.28    0.44   0.28  0.440  mci_non_amnestic
+ 13  01083   79   MCI   MCI   0.35    0.44   0.21  0.440  mci_amnestic
+ 14  00298   78     N   MCI   0.21    0.44   0.34  0.442  smi  (would be wrong)
+ 15  00203   67     D     N   0.44    0.43   0.12  0.442  vd, sivd  (would be wrong)
+ 16  00004   78     D     D   0.18    0.38   0.45  0.446  ad, load
+ 17  01330   74   MCI   MCI   0.43    0.45   0.12  0.446  mci_vascular
+ 18  00301   80   MCI   MCI   0.25    0.45   0.30  0.449  mci_amnestic, mci_amnestic_rf
+ 19  00763   76     D   MCI   0.22    0.45   0.33  0.450  ad, load  (would be wrong)
+ 20  00259   80     D   MCI   0.23    0.45   0.32  0.452  vd, sivd  (would be wrong)
+ 21  00565   59   MCI     D   0.24    0.30   0.45  0.454  mci_amnestic, mci_amnestic_ef  (would be wrong)
+ 22  00740   79   MCI   MCI   0.37    0.45   0.18  0.454  mci_vascular
+ 23  01335   81   MCI   MCI   0.29    0.45   0.25  0.454  mci_vascular
+Referred: {'N': 3, 'MCI': 14, 'D': 6} | 10 of 23 would have been misclassified if forced

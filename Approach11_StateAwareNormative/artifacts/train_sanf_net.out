@@ -1,0 +1,82 @@
+[11:30:12] train: run 'sanf_net' on NVIDIA GeForce RTX 4050 Laptop GPU | seeds [0, 1, 2, 3, 4] | overrides none
+[11:30:14] seed 0: training 142.6k params, 35 epochs x 59 steps, modalities ['eeg', 'bio', 'age']
+[11:30:48] seed 0 ep   1/35 loss 1.2774 train 35.5% | val(EMA) 33.6% F1 0.2733 AUC 0.544 | gates {'eeg': 0.314, 'bio': 0.406, 'age': 0.28} | 34.3s *best*
+[11:30:54] seed 0 ep   2/35 loss 1.1151 train 48.6% | val(EMA) 42.9% F1 0.3071 AUC 0.680 | gates {'eeg': 0.317, 'bio': 0.364, 'age': 0.319} | 5.7s *best*
+[11:31:00] seed 0 ep   3/35 loss 1.0261 train 53.8% | val(EMA) 46.2% F1 0.3596 AUC 0.703 | gates {'eeg': 0.325, 'bio': 0.338, 'age': 0.337} | 5.6s *best*
+[11:31:05] seed 0 ep   4/35 loss 0.9880 train 55.0% | val(EMA) 46.2% F1 0.3923 AUC 0.707 | gates {'eeg': 0.277, 'bio': 0.32, 'age': 0.403} | 5.6s *best*
+[11:31:16] seed 0 ep   6/35 loss 0.9568 train 57.6% | val(EMA) 48.7% F1 0.4490 AUC 0.719 | gates {'eeg': 0.25, 'bio': 0.298, 'age': 0.451} | 5.6s *best*
+[11:31:22] seed 0 ep   7/35 loss 0.9171 train 58.8% | val(EMA) 48.7% F1 0.4506 AUC 0.730 | gates {'eeg': 0.262, 'bio': 0.262, 'age': 0.476} | 5.6s *best*
+[11:31:28] seed 0 ep   8/35 loss 0.9299 train 59.2% | val(EMA) 50.4% F1 0.4640 AUC 0.733 | gates {'eeg': 0.25, 'bio': 0.271, 'age': 0.479} | 5.6s *best*
+[11:31:39] seed 0 ep  10/35 loss 0.8797 train 62.0% | val(EMA) 52.9% F1 0.4875 AUC 0.753 | gates {'eeg': 0.281, 'bio': 0.326, 'age': 0.393} | 5.6s *best*
+[11:31:44] seed 0 ep  11/35 loss 0.8741 train 61.9% | val(EMA) 52.9% F1 0.4939 AUC 0.760 | gates {'eeg': 0.29, 'bio': 0.325, 'age': 0.385} | 5.6s *best*
+[11:31:50] seed 0 ep  12/35 loss 0.8688 train 61.8% | val(EMA) 56.3% F1 0.5383 AUC 0.769 | gates {'eeg': 0.289, 'bio': 0.372, 'age': 0.339} | 5.5s *best*
+[11:31:56] seed 0 ep  13/35 loss 0.8874 train 61.2% | val(EMA) 56.3% F1 0.5512 AUC 0.775 | gates {'eeg': 0.275, 'bio': 0.371, 'age': 0.354} | 5.6s *best*
+[11:32:12] seed 0 ep  16/35 loss 0.8630 train 62.6% | val(EMA) 56.3% F1 0.5522 AUC 0.773 | gates {'eeg': 0.246, 'bio': 0.331, 'age': 0.423} | 5.6s *best*
+[11:32:18] seed 0 ep  17/35 loss 0.8234 train 64.2% | val(EMA) 58.8% F1 0.5807 AUC 0.785 | gates {'eeg': 0.249, 'bio': 0.319, 'age': 0.432} | 5.6s *best*
+[11:32:29] seed 0 ep  19/35 loss 0.8109 train 65.7% | val(EMA) 60.5% F1 0.6005 AUC 0.787 | gates {'eeg': 0.233, 'bio': 0.341, 'age': 0.426} | 5.6s *best*
+[11:32:40] seed 0 ep  21/35 loss 0.8334 train 64.2% | val(EMA) 58.0% F1 0.5736 AUC 0.792 | gates {'eeg': 0.23, 'bio': 0.344, 'age': 0.426} | 5.6s
+[11:33:08] seed 0 ep  26/35 loss 0.7605 train 66.8% | val(EMA) 58.8% F1 0.5861 AUC 0.792 | gates {'eeg': 0.244, 'bio': 0.319, 'age': 0.436} | 5.6s
+[11:33:31] seed 0 ep  30/35 loss 0.7356 train 67.1% | val(EMA) 60.5% F1 0.6042 AUC 0.794 | gates {'eeg': 0.236, 'bio': 0.306, 'age': 0.458} | 5.7s *best*
+[11:33:37] seed 0 ep  31/35 loss 0.7505 train 67.6% | val(EMA) 59.7% F1 0.5982 AUC 0.795 | gates {'eeg': 0.236, 'bio': 0.302, 'age': 0.462} | 5.7s
+[11:33:59] seed 0 ep  35/35 loss 0.7720 train 66.6% | val(EMA) 58.8% F1 0.5848 AUC 0.785 | gates {'eeg': 0.248, 'bio': 0.295, 'age': 0.457} | 5.7s
+[11:33:59] seed 0: finished. best val F1 0.6042; final EMA val F1 0.5848
+[11:34:00] seed 1: training 142.6k params, 35 epochs x 59 steps, modalities ['eeg', 'bio', 'age']
+[11:34:20] seed 1 ep   1/35 loss 1.2765 train 40.0% | val(EMA) 42.0% F1 0.3165 AUC 0.608 | gates {'eeg': 0.224, 'bio': 0.379, 'age': 0.397} | 19.5s *best*
+[11:34:25] seed 1 ep   2/35 loss 1.0673 train 54.0% | val(EMA) 47.1% F1 0.3640 AUC 0.663 | gates {'eeg': 0.219, 'bio': 0.403, 'age': 0.378} | 5.5s *best*
+[11:34:31] seed 1 ep   3/35 loss 1.0493 train 54.1% | val(EMA) 52.1% F1 0.4250 AUC 0.704 | gates {'eeg': 0.194, 'bio': 0.347, 'age': 0.46} | 5.6s *best*
+[11:34:42] seed 1 ep   5/35 loss 0.9760 train 56.9% | val(EMA) 52.1% F1 0.4481 AUC 0.722 | gates {'eeg': 0.178, 'bio': 0.358, 'age': 0.464} | 5.6s *best*
+[11:34:48] seed 1 ep   6/35 loss 0.9611 train 57.8% | val(EMA) 54.6% F1 0.4938 AUC 0.735 | gates {'eeg': 0.178, 'bio': 0.35, 'age': 0.472} | 5.6s *best*
+[11:34:59] seed 1 ep   8/35 loss 0.9548 train 60.0% | val(EMA) 53.8% F1 0.4955 AUC 0.765 | gates {'eeg': 0.228, 'bio': 0.341, 'age': 0.431} | 5.6s *best*
+[11:35:05] seed 1 ep   9/35 loss 0.9396 train 60.5% | val(EMA) 56.3% F1 0.5349 AUC 0.765 | gates {'eeg': 0.234, 'bio': 0.326, 'age': 0.44} | 5.7s *best*
+[11:35:10] seed 1 ep  10/35 loss 0.9220 train 59.9% | val(EMA) 56.3% F1 0.5432 AUC 0.767 | gates {'eeg': 0.254, 'bio': 0.313, 'age': 0.433} | 5.6s *best*
+[11:35:16] seed 1 ep  11/35 loss 0.9301 train 59.7% | val(EMA) 51.3% F1 0.4810 AUC 0.756 | gates {'eeg': 0.351, 'bio': 0.353, 'age': 0.295} | 5.7s
+[11:35:22] seed 1 ep  12/35 loss 0.8797 train 62.4% | val(EMA) 58.0% F1 0.5574 AUC 0.785 | gates {'eeg': 0.24, 'bio': 0.357, 'age': 0.403} | 5.7s *best*
+[11:35:33] seed 1 ep  14/35 loss 0.8394 train 63.1% | val(EMA) 58.0% F1 0.5628 AUC 0.794 | gates {'eeg': 0.261, 'bio': 0.321, 'age': 0.418} | 5.7s *best*
+[11:35:39] seed 1 ep  15/35 loss 0.8344 train 63.9% | val(EMA) 58.8% F1 0.5703 AUC 0.804 | gates {'eeg': 0.254, 'bio': 0.353, 'age': 0.393} | 5.7s *best*
+[11:35:45] seed 1 ep  16/35 loss 0.8331 train 63.1% | val(EMA) 57.1% F1 0.5556 AUC 0.807 | gates {'eeg': 0.269, 'bio': 0.322, 'age': 0.41} | 5.7s
+[11:36:02] seed 1 ep  19/35 loss 0.8254 train 64.6% | val(EMA) 58.0% F1 0.5707 AUC 0.817 | gates {'eeg': 0.303, 'bio': 0.32, 'age': 0.376} | 5.7s *best*
+[11:36:08] seed 1 ep  20/35 loss 0.7939 train 66.2% | val(EMA) 58.8% F1 0.5791 AUC 0.819 | gates {'eeg': 0.3, 'bio': 0.315, 'age': 0.385} | 5.8s *best*
+[11:36:14] seed 1 ep  21/35 loss 0.7709 train 68.2% | val(EMA) 60.5% F1 0.5969 AUC 0.822 | gates {'eeg': 0.291, 'bio': 0.309, 'age': 0.4} | 5.8s *best*
+[11:36:19] seed 1 ep  22/35 loss 0.7599 train 66.4% | val(EMA) 61.3% F1 0.6080 AUC 0.822 | gates {'eeg': 0.305, 'bio': 0.299, 'age': 0.397} | 5.7s *best*
+[11:36:43] seed 1 ep  26/35 loss 0.7487 train 67.5% | val(EMA) 61.3% F1 0.6017 AUC 0.820 | gates {'eeg': 0.331, 'bio': 0.347, 'age': 0.321} | 5.9s
+[11:36:48] seed 1 ep  27/35 loss 0.7693 train 69.5% | val(EMA) 62.2% F1 0.6128 AUC 0.824 | gates {'eeg': 0.33, 'bio': 0.336, 'age': 0.334} | 5.8s *best*
+[11:37:12] seed 1 ep  31/35 loss 0.7484 train 69.9% | val(EMA) 60.5% F1 0.6007 AUC 0.827 | gates {'eeg': 0.34, 'bio': 0.324, 'age': 0.336} | 5.8s
+[11:37:18] seed 1 ep  32/35 loss 0.7343 train 69.7% | val(EMA) 62.2% F1 0.6210 AUC 0.824 | gates {'eeg': 0.335, 'bio': 0.315, 'age': 0.35} | 5.8s *best*
+[11:37:35] seed 1 ep  35/35 loss 0.7197 train 70.0% | val(EMA) 61.3% F1 0.6126 AUC 0.825 | gates {'eeg': 0.341, 'bio': 0.312, 'age': 0.347} | 5.8s
+[11:37:35] seed 1: finished. best val F1 0.6210; final EMA val F1 0.6126
+[11:37:36] seed 2: training 142.6k params, 35 epochs x 59 steps, modalities ['eeg', 'bio', 'age']
+[11:37:55] seed 2 ep   1/35 loss 1.2783 train 38.8% | val(EMA) 34.5% F1 0.2684 AUC 0.585 | gates {'eeg': 0.386, 'bio': 0.215, 'age': 0.399} | 19.3s *best*
+[11:38:01] seed 2 ep   2/35 loss 1.1082 train 49.5% | val(EMA) 45.4% F1 0.3704 AUC 0.638 | gates {'eeg': 0.405, 'bio': 0.192, 'age': 0.403} | 5.6s *best*
+[11:38:07] seed 2 ep   3/35 loss 1.1037 train 52.1% | val(EMA) 49.6% F1 0.4019 AUC 0.688 | gates {'eeg': 0.323, 'bio': 0.185, 'age': 0.492} | 5.6s *best*
+[11:38:12] seed 2 ep   4/35 loss 1.0413 train 55.3% | val(EMA) 50.4% F1 0.4072 AUC 0.697 | gates {'eeg': 0.281, 'bio': 0.239, 'age': 0.479} | 5.5s *best*
+[11:38:18] seed 2 ep   5/35 loss 1.0016 train 56.8% | val(EMA) 50.4% F1 0.4185 AUC 0.708 | gates {'eeg': 0.284, 'bio': 0.265, 'age': 0.451} | 5.6s *best*
+[11:38:24] seed 2 ep   6/35 loss 0.9986 train 56.8% | val(EMA) 52.1% F1 0.4643 AUC 0.714 | gates {'eeg': 0.264, 'bio': 0.27, 'age': 0.466} | 5.6s *best*
+[11:38:29] seed 2 ep   7/35 loss 0.9565 train 57.8% | val(EMA) 55.5% F1 0.5189 AUC 0.721 | gates {'eeg': 0.252, 'bio': 0.309, 'age': 0.439} | 5.6s *best*
+[11:38:35] seed 2 ep   8/35 loss 0.9681 train 59.1% | val(EMA) 56.3% F1 0.5373 AUC 0.728 | gates {'eeg': 0.235, 'bio': 0.336, 'age': 0.429} | 5.7s *best*
+[11:38:52] seed 2 ep  11/35 loss 0.9080 train 60.5% | val(EMA) 52.9% F1 0.5089 AUC 0.740 | gates {'eeg': 0.279, 'bio': 0.387, 'age': 0.333} | 5.8s
+[11:39:16] seed 2 ep  15/35 loss 0.8705 train 63.3% | val(EMA) 55.5% F1 0.5377 AUC 0.756 | gates {'eeg': 0.282, 'bio': 0.421, 'age': 0.298} | 5.8s *best*
+[11:39:21] seed 2 ep  16/35 loss 0.8515 train 62.4% | val(EMA) 55.5% F1 0.5415 AUC 0.759 | gates {'eeg': 0.292, 'bio': 0.42, 'age': 0.289} | 5.9s *best*
+[11:39:27] seed 2 ep  17/35 loss 0.8262 train 63.6% | val(EMA) 58.0% F1 0.5706 AUC 0.759 | gates {'eeg': 0.293, 'bio': 0.452, 'age': 0.255} | 5.8s *best*
+[11:39:51] seed 2 ep  21/35 loss 0.8036 train 64.5% | val(EMA) 55.5% F1 0.5430 AUC 0.773 | gates {'eeg': 0.305, 'bio': 0.42, 'age': 0.275} | 5.8s
+[11:40:14] seed 2 ep  25/35 loss 0.7875 train 65.1% | val(EMA) 59.7% F1 0.5852 AUC 0.780 | gates {'eeg': 0.32, 'bio': 0.414, 'age': 0.266} | 5.9s *best*
+[11:40:20] seed 2 ep  26/35 loss 0.7762 train 66.1% | val(EMA) 60.5% F1 0.5965 AUC 0.785 | gates {'eeg': 0.319, 'bio': 0.423, 'age': 0.258} | 5.8s *best*
+[11:40:26] seed 2 ep  27/35 loss 0.7477 train 68.0% | val(EMA) 60.5% F1 0.6010 AUC 0.788 | gates {'eeg': 0.322, 'bio': 0.427, 'age': 0.251} | 5.8s *best*
+[11:40:38] seed 2 ep  29/35 loss 0.7639 train 68.0% | val(EMA) 60.5% F1 0.6032 AUC 0.785 | gates {'eeg': 0.322, 'bio': 0.413, 'age': 0.265} | 5.8s *best*
+[11:40:49] seed 2 ep  31/35 loss 0.7558 train 67.8% | val(EMA) 60.5% F1 0.6018 AUC 0.786 | gates {'eeg': 0.312, 'bio': 0.411, 'age': 0.278} | 5.8s
+[11:40:55] seed 2 ep  32/35 loss 0.7596 train 68.5% | val(EMA) 61.3% F1 0.6102 AUC 0.785 | gates {'eeg': 0.31, 'bio': 0.409, 'age': 0.281} | 5.9s *best*
+[11:41:13] seed 2 ep  35/35 loss 0.7497 train 68.9% | val(EMA) 59.7% F1 0.5948 AUC 0.786 | gates {'eeg': 0.304, 'bio': 0.414, 'age': 0.283} | 5.9s
+[11:41:13] seed 2: finished. best val F1 0.6102; final EMA val F1 0.5948
+[11:41:14] seed 3: training 142.6k params, 35 epochs x 59 steps, modalities ['eeg', 'bio', 'age']
+[11:41:34] seed 3 ep   1/35 loss 1.2992 train 35.0% | val(EMA) 26.1% F1 0.1378 AUC 0.433 | gates {'eeg': 0.256, 'bio': 0.25, 'age': 0.494} | 19.7s *best*
+[11:41:39] seed 3 ep   2/35 loss 1.0739 train 52.8% | val(EMA) 43.7% F1 0.3528 AUC 0.586 | gates {'eeg': 0.246, 'bio': 0.26, 'age': 0.494} | 5.6s *best*
+[11:41:45] seed 3 ep   3/35 loss 1.0392 train 55.1% | val(EMA) 47.1% F1 0.3732 AUC 0.651 | gates {'eeg': 0.224, 'bio': 0.262, 'age': 0.514} | 5.6s *best*
+[11:41:56] seed 3 ep   5/35 loss 0.9942 train 56.8% | val(EMA) 45.4% F1 0.3816 AUC 0.709 | gates {'eeg': 0.195, 'bio': 0.33, 'age': 0.475} | 5.6s *best*
+[11:42:02] seed 3 ep   6/35 loss 0.9699 train 57.7% | val(EMA) 49.6% F1 0.4606 AUC 0.709 | gates {'eeg': 0.211, 'bio': 0.367, 'age': 0.422} | 5.7s *best*
+[11:42:08] seed 3 ep   7/35 loss 0.9716 train 57.7% | val(EMA) 49.6% F1 0.4682 AUC 0.721 | gates {'eeg': 0.194, 'bio': 0.38, 'age': 0.426} | 5.7s *best*
+[11:42:13] seed 3 ep   8/35 loss 0.9536 train 58.4% | val(EMA) 50.4% F1 0.4796 AUC 0.727 | gates {'eeg': 0.194, 'bio': 0.36, 'age': 0.445} | 5.7s *best*
+[11:42:19] seed 3 ep   9/35 loss 0.9168 train 61.3% | val(EMA) 53.8% F1 0.5208 AUC 0.738 | gates {'eeg': 0.179, 'bio': 0.443, 'age': 0.379} | 5.8s *best*
+[11:42:25] seed 3 ep  10/35 loss 0.9272 train 58.7% | val(EMA) 54.6% F1 0.5298 AUC 0.743 | gates {'eeg': 0.184, 'bio': 0.432, 'age': 0.384} | 5.8s *best*
+[11:42:31] seed 3 ep  11/35 loss 0.8881 train 61.4% | val(EMA) 53.8% F1 0.5233 AUC 0.737 | gates {'eeg': 0.206, 'bio': 0.373, 'age': 0.421} | 5.8s
+[11:42:37] seed 3 ep  12/35 loss 0.8644 train 63.5% | val(EMA) 56.3% F1 0.5480 AUC 0.747 | gates {'eeg': 0.205, 'bio': 0.404, 'age': 0.392} | 5.7s *best*
+[11:42:42] seed 3 ep  13/35 loss 0.8716 train 61.0% | val(EMA) 57.1% F1 0.5590 AUC 0.752 | gates {'eeg': 0.206, 'bio': 0.415, 'age': 0.38} | 5.7s *best*
+[11:43:00] seed 3 ep  16/35 loss 0.8585 train 61.7% | val(EMA) 55.5% F1 0.5440 AUC 0.761 | gates {'eeg': 0.235, 'bio': 0.443, 'age': 0.322} | 5.8s

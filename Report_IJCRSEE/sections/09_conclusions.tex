@@ -1,0 +1,12 @@
+\section{Conclusions}
+
+CAUEEG event annotations need a pause correction before they can be used. Once corrected, they enable
+state-aware, age-normative modelling of MCI and dementia. SANF-Net, a 143k-parameter fusion network built on
+these ideas, reaches 72.9\% accuracy and an AUC of 0.87 on the official test split as a three-model ensemble,
+comparable to published models hundreds of times larger, with interpretable modality gates. Under repeated
+cross-validation it reaches 59.5\%, outperforms deep EEG-only baselines, matches a strong linear model while
+relying less on the protocol shortcut, and transfers to an independent cohort with an AUC of 0.70. The analysis
+also shows that community-recruited normals in CAUEEG are distinguishable by recording protocol and age alone,
+so confound-controlled, cross-validated evaluation should be standard for EEG-based cognitive screening.
+Future work includes improving MCI sensitivity, multi-site training, adding cognitive test scores, and
+deploying the model through the clinical dashboard.

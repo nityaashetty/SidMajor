@@ -1,0 +1,2 @@
+[00:05:59] eval 'abl_no_events_cv5' fold0 [final]: held-out fold acc 61.21% | test acc 62.71%  bal 61.17%  F1 0.6000  AUC 0.8305 | no-overlap acc 57.78%
+[00:07:49] eval 'abl_no_events_cv5' fold1 [final]: held-out fold acc 58.41% | test acc 55.08%  bal 53.24%  F1 0.5125  AUC 0.7594 | no-overlap acc 56.67%

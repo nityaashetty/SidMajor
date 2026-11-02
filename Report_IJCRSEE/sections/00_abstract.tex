@@ -1,0 +1,21 @@
+% Abstract: max. 250 words, no abbreviations, no formulas (IJCRSEE rule).
+\noindent\textbf{Abstract:} Resting-state electroencephalography is an inexpensive, portable candidate for
+screening mild cognitive impairment and dementia, but published deep learning models are large, mix
+different recording states and are rarely tested outside their own dataset. This study aimed to build a
+compact, interpretable classifier of normal cognition, mild cognitive impairment and dementia and to evaluate
+it rigorously. Using 1,187 clinical recordings from Chung-Ang University Hospital, we first corrected a timing
+error in the event annotations, reducing the median misalignment in paused recordings from 33 to 3 seconds
+and making the eyes-closed, eyes-open and light-stimulation state of every second known. We then designed a
+state-aware, age-normative fusion network with 143,000 parameters that combines state-conditioned signal
+segments, 48 clinical biomarkers expressed relative to healthy people of the same age, and age, through
+interpretable gates. An ensemble of three networks reached 72.9\% accuracy and an area under the curve of 0.87
+on the official test split, above the best published single model (70.2\%) at a fraction of its size, and
+recognised 95.7\% of healthy participants. Under repeated five-fold cross-validation the network reached
+59.5\%, matching logistic regression on the same biomarkers and exceeding two deep learning baselines.
+Community volunteers were younger and recorded with a different stimulation protocol than patients, which
+inflates apparent performance, and the model transferred to an independent cohort with an area under the curve
+of 0.70. We recommend confound-controlled, cross-validated evaluation for such screening tools.
+
+\vspace{6pt}
+\noindent\textbf{Keywords:} electroencephalography, dementia, mild cognitive impairment, deep learning,
+normative modelling, human--AI interaction.

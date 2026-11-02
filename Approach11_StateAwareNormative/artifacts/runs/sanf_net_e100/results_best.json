@@ -1,0 +1,477 @@
+{
+  "run": "sanf_net_e100",
+  "checkpoint": "best",
+  "seeds": [
+    0
+  ],
+  "modalities": [
+    "eeg",
+    "bio",
+    "age"
+  ],
+  "per_seed": [
+    {
+      "seed": 0,
+      "val": {
+        "n": 119,
+        "accuracy": 0.6302521008403361,
+        "balanced_accuracy": 0.6336739464369198,
+        "macro_f1": 0.6346230158730158,
+        "roc_auc_ovr_macro": 0.808847445792234,
+        "per_class": {
+          "Normal": {
+            "precision": 0.7894736842105263,
+            "recall": 0.6521739130434783,
+            "f1": 0.7142857142857143,
+            "support": 46
+          },
+          "MCI": {
+            "precision": 0.5,
+            "recall": 0.5714285714285714,
+            "f1": 0.5333333333333333,
+            "support": 42
+          },
+          "Dementia": {
+            "precision": 0.6363636363636364,
+            "recall": 0.6774193548387096,
+            "f1": 0.65625,
+            "support": 31
+          }
+        },
+        "confusion_matrix": [
+          [
+            30,
+            14,
+            2
+          ],
+          [
+            8,
+            24,
+            10
+          ],
+          [
+            0,
+            10,
+            21
+          ]
+        ]
+      },
+      "test": {
+        "n": 118,
+        "accuracy": 0.7203389830508474,
+        "balanced_accuracy": 0.7072486573393083,
+        "macro_f1": 0.7004918399284596,
+        "roc_auc_ovr_macro": 0.8626590118147398,
+        "per_class": {
+          "Normal": {
+            "precision": 0.7457627118644068,
+            "recall": 0.9565217391304348,
+            "f1": 0.8380952380952381,
+            "support": 46
+          },
+          "MCI": {
+            "precision": 0.6666666666666666,
+            "recall": 0.4878048780487805,
+            "f1": 0.5633802816901409,
+            "support": 41
+          },
+          "Dementia": {
+            "precision": 0.7241379310344828,
+            "recall": 0.6774193548387096,
+            "f1": 0.7,
+            "support": 31
+          }
+        },
+        "confusion_matrix": [
+          [
+            44,
+            2,
+            0
+          ],
+          [
+            13,
+            20,
+            8
+          ],
+          [
+            2,
+            8,
+            21
+          ]
+        ]
+      },
+      "test_no_overlap": {
+        "n": 90,
+        "accuracy": 0.7222222222222222,
+        "balanced_accuracy": 0.7076479076479076,
+        "macro_f1": 0.7008880225254494,
+        "roc_auc_ovr_macro": 0.8569814464860905,
+        "per_class": {
+          "Normal": {
+            "precision": 0.7391304347826086,
+            "recall": 0.9714285714285714,
+            "f1": 0.8395061728395061,
+            "support": 35
+          },
+          "MCI": {
+            "precision": 0.7083333333333334,
+            "recall": 0.5151515151515151,
+            "f1": 0.5964912280701754,
+            "support": 33
+          },
+          "Dementia": {
+            "precision": 0.7,
+            "recall": 0.6363636363636364,
+            "f1": 0.6666666666666666,
+            "support": 22
+          }
+        },
+        "confusion_matrix": [
+          [
+            34,
+            1,
+            0
+          ],
+          [
+            10,
+            17,
+            6
+          ],
+          [
+            2,
+            6,
+            14
+          ]
+        ]
+      }
+    }
+  ],
+  "mean_over_seeds": {
+    "val": {
+      "n_runs": 1,
+      "accuracy_mean": 0.6302521008403361,
+      "accuracy_std": 0.0,
+      "balanced_accuracy_mean": 0.6336739464369198,
+      "balanced_accuracy_std": 0.0,
+      "macro_f1_mean": 0.6346230158730158,
+      "macro_f1_std": 0.0,
+      "roc_auc_ovr_macro_mean": 0.808847445792234,
+      "roc_auc_ovr_macro_std": 0.0
+    },
+    "test": {
+      "n_runs": 1,
+      "accuracy_mean": 0.7203389830508474,
+      "accuracy_std": 0.0,
+      "balanced_accuracy_mean": 0.7072486573393083,
+      "balanced_accuracy_std": 0.0,
+      "macro_f1_mean": 0.7004918399284596,
+      "macro_f1_std": 0.0,
+      "roc_auc_ovr_macro_mean": 0.8626590118147398,
+      "roc_auc_ovr_macro_std": 0.0
+    },
+    "test_no_overlap": {
+      "n_runs": 1,
+      "accuracy_mean": 0.7222222222222222,
+      "accuracy_std": 0.0,
+      "balanced_accuracy_mean": 0.7076479076479076,
+      "balanced_accuracy_std": 0.0,
+      "macro_f1_mean": 0.7008880225254494,
+      "macro_f1_std": 0.0,
+      "roc_auc_ovr_macro_mean": 0.8569814464860905,
+      "roc_auc_ovr_macro_std": 0.0
+    }
+  },
+  "seed_ensemble": {
+    "val": {
+      "n": 119,
+      "accuracy": 0.6302521008403361,
+      "balanced_accuracy": 0.6336739464369198,
+      "macro_f1": 0.6346230158730158,
+      "roc_auc_ovr_macro": 0.808847445792234,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7894736842105263,
+          "recall": 0.6521739130434783,
+          "f1": 0.7142857142857143,
+          "support": 46
+        },
+        "MCI": {
+          "precision": 0.5,
+          "recall": 0.5714285714285714,
+          "f1": 0.5333333333333333,
+          "support": 42
+        },
+        "Dementia": {
+          "precision": 0.6363636363636364,
+          "recall": 0.6774193548387096,
+          "f1": 0.65625,
+          "support": 31
+        }
+      },
+      "confusion_matrix": [
+        [
+          30,
+          14,
+          2
+        ],
+        [
+          8,
+          24,
+          10
+        ],
+        [
+          0,
+          10,
+          21
+        ]
+      ]
+    },
+    "test": {
+      "n": 118,
+      "accuracy": 0.7203389830508474,
+      "balanced_accuracy": 0.7072486573393083,
+      "macro_f1": 0.7004918399284596,
+      "roc_auc_ovr_macro": 0.8626590118147398,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7457627118644068,
+          "recall": 0.9565217391304348,
+          "f1": 0.8380952380952381,
+          "support": 46
+        },
+        "MCI": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4878048780487805,
+          "f1": 0.5633802816901409,
+          "support": 41
+        },
+        "Dementia": {
+          "precision": 0.7241379310344828,
+          "recall": 0.6774193548387096,
+          "f1": 0.7,
+          "support": 31
+        }
+      },
+      "confusion_matrix": [
+        [
+          44,
+          2,
+          0
+        ],
+        [
+          13,
+          20,
+          8
+        ],
+        [
+          2,
+          8,
+          21
+        ]
+      ]
+    },
+    "test_no_overlap": {
+      "n": 90,
+      "accuracy": 0.7222222222222222,
+      "balanced_accuracy": 0.7076479076479076,
+      "macro_f1": 0.7008880225254494,
+      "roc_auc_ovr_macro": 0.8569814464860905,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7391304347826086,
+          "recall": 0.9714285714285714,
+          "f1": 0.8395061728395061,
+          "support": 35
+        },
+        "MCI": {
+          "precision": 0.7083333333333334,
+          "recall": 0.5151515151515151,
+          "f1": 0.5964912280701754,
+          "support": 33
+        },
+        "Dementia": {
+          "precision": 0.7,
+          "recall": 0.6363636363636364,
+          "f1": 0.6666666666666666,
+          "support": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          34,
+          1,
+          0
+        ],
+        [
+          10,
+          17,
+          6
+        ],
+        [
+          2,
+          6,
+          14
+        ]
+      ]
+    }
+  },
+  "reference_accuracy": {
+    "CEEDNet best single model (paper Table 4)": 0.7018,
+    "CEEDNet 9-model ensemble": 0.7466,
+    "CEEDNet ensemble, no-overlap test (paper Table 7)": 0.7666
+  },
+  "mean_gates_by_true_class": {
+    "Normal": {
+      "eeg": 0.3608477711677551,
+      "bio": 0.2547459304332733,
+      "age": 0.38440632820129395
+    },
+    "MCI": {
+      "eeg": 0.1799439638853073,
+      "bio": 0.36203017830848694,
+      "age": 0.45802581310272217
+    },
+    "Dementia": {
+      "eeg": 0.2610064148902893,
+      "bio": 0.40338391065597534,
+      "age": 0.33560967445373535
+    }
+  },
+  "fusion_with_tabular": {
+    "tabular_model": "bio+age|standardised|logreg",
+    "weight_tabular": 0.0,
+    "chosen_on": "val macro-F1",
+    "val": {
+      "n": 119,
+      "accuracy": 0.6302521008403361,
+      "balanced_accuracy": 0.6336739464369198,
+      "macro_f1": 0.6346230158730158,
+      "roc_auc_ovr_macro": 0.808847445792234,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7894736842105263,
+          "recall": 0.6521739130434783,
+          "f1": 0.7142857142857143,
+          "support": 46
+        },
+        "MCI": {
+          "precision": 0.5,
+          "recall": 0.5714285714285714,
+          "f1": 0.5333333333333333,
+          "support": 42
+        },
+        "Dementia": {
+          "precision": 0.6363636363636364,
+          "recall": 0.6774193548387096,
+          "f1": 0.65625,
+          "support": 31
+        }
+      },
+      "confusion_matrix": [
+        [
+          30,
+          14,
+          2
+        ],
+        [
+          8,
+          24,
+          10
+        ],
+        [
+          0,
+          10,
+          21
+        ]
+      ]
+    },
+    "test": {
+      "n": 118,
+      "accuracy": 0.7203389830508474,
+      "balanced_accuracy": 0.7072486573393083,
+      "macro_f1": 0.7004918399284596,
+      "roc_auc_ovr_macro": 0.8626590118147398,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7457627118644068,
+          "recall": 0.9565217391304348,
+          "f1": 0.8380952380952381,
+          "support": 46
+        },
+        "MCI": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4878048780487805,
+          "f1": 0.5633802816901409,
+          "support": 41
+        },
+        "Dementia": {
+          "precision": 0.7241379310344828,
+          "recall": 0.6774193548387096,
+          "f1": 0.7,
+          "support": 31
+        }
+      },
+      "confusion_matrix": [
+        [
+          44,
+          2,
+          0
+        ],
+        [
+          13,
+          20,
+          8
+        ],
+        [
+          2,
+          8,
+          21
+        ]
+      ]
+    },
+    "test_no_overlap": {
+      "n": 90,
+      "accuracy": 0.7222222222222222,
+      "balanced_accuracy": 0.7076479076479076,
+      "macro_f1": 0.7008880225254494,
+      "roc_auc_ovr_macro": 0.8569814464860905,
+      "per_class": {
+        "Normal": {
+          "precision": 0.7391304347826086,
+          "recall": 0.9714285714285714,
+          "f1": 0.8395061728395061,
+          "support": 35
+        },
+        "MCI": {
+          "precision": 0.7083333333333334,
+          "recall": 0.5151515151515151,
+          "f1": 0.5964912280701754,
+          "support": 33
+        },
+        "Dementia": {
+          "precision": 0.7,
+          "recall": 0.6363636363636364,
+          "f1": 0.6666666666666666,
+          "support": 22
+        }
+      },
+      "confusion_matrix": [
+        [
+          34,
+          1,
+          0
+        ],
+        [
+          10,
+          17,
+          6
+        ],
+        [
+          2,
+          6,
+          14
+        ]
+      ]
+    }
+  }
+}

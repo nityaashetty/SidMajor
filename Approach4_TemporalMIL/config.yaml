@@ -1,0 +1,63 @@
+# Approach 4 -- temporal segment aggregation (MIL).
+# Measured on an RTX 4050 Laptop (6.44 GB), batch 8:
+#     8 segs  290 samp/s  0.51 GB      24 segs  94 samp/s  1.50 GB
+#    16 segs  143 samp/s  1.01 GB      72 segs  30 samp/s  4.46 GB  <- batch 16 will NOT fit
+# 24 segments at batch 8 is the default: ~17 min for 100 epochs, ~85 min for 5 seeds.
+#
+# Do NOT set train_views: 72. 456 of 1379 recordings hold fewer than 72 non-overlapping
+# 10 s windows, and 72 leaves no VRAM headroom. The segment COUNT is fixed and the
+# SPACING adapts, so 24 still spans the whole recording.
+
+approach: temporal_mil
+
+paths:
+  dataset_root: null
+  cache_dir: null
+  output_dir: outputs
+
+data:
+  task: dementia
+  crop_seconds: 10.0
+  t0_seconds: 10.0
+  train_views: 24             # segments per patient, stratified random starts
+  eval_views: 24              # same count, deterministic evenly-spaced starts
+  train_repeats: 2            # 950 x 2 = 1900 samples/epoch (each already sees 24 segments)
+  sampling: stratified        # one random start per bin: full coverage + augmentation
+  normalize: trainset
+  noise_awgn: 0.02
+  noise_mwgn: 0.02
+
+model:
+  num_classes: 3
+  pool: attention             # attention | mean | max -- ALWAYS also run mean as baseline
+  attn_hidden: 64
+  F1: 8
+  D: 2
+  F2: 16
+  kern_len: 101
+  dropout: 0.25
+  embed_dim: 64
+  head_hidden: 64
+  head_dropout: 0.5
+  use_age: true               # SET false FOR THE AGE ABLATION
+  norm: group                 # GroupNorm: batch is only 8 here, BatchNorm is unreliable
+
+train:
+  epochs: 100
+  batch_size: 8               # VRAM-bound: 24 segs x 8 = 1.50 GB measured
+  eval_batch_size: 8
+  lr: 1.0e-3
+  lr_min: 1.0e-6
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  label_smoothing: 0.0
+  amp: true
+  min_epochs: 15
+  early_stop_patience: 25
+  select_metric: macro_f1
+  deterministic: false
+  seed: 0
+  seeds: [0, 1, 2, 3, 4]
+
+runtime:
+  num_workers: 4              # each item reads 24 crops; keep workers >0 if possible

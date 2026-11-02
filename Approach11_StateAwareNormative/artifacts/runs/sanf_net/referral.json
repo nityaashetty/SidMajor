@@ -1,0 +1,608 @@
+{
+  "run": "sanf_net",
+  "checkpoint": "final",
+  "table": [
+    {
+      "split": "test",
+      "target_rate": 0.0,
+      "cutoff": -1.0,
+      "referred": 0.0,
+      "acc_kept": 0.7288135593220338,
+      "f1_kept": 0.7087586867960699,
+      "recall_kept": {
+        "Normal": 0.9565217391304348,
+        "MCI": 0.43902439024390244,
+        "Dementia": 0.7741935483870968
+      },
+      "referred_by_class": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "split": "test",
+      "target_rate": 0.1,
+      "cutoff": 0.4308513104915619,
+      "referred": 0.05084745762711865,
+      "acc_kept": 0.7321428571428571,
+      "f1_kept": 0.7050478761005077,
+      "recall_kept": {
+        "Normal": 0.9555555555555556,
+        "MCI": 0.40540540540540543,
+        "Dementia": 0.8
+      },
+      "referred_by_class": [
+        1,
+        4,
+        1
+      ]
+    },
+    {
+      "split": "test",
+      "target_rate": 0.2,
+      "cutoff": 0.443619042634964,
+      "referred": 0.1271186440677966,
+      "acc_kept": 0.7572815533980582,
+      "f1_kept": 0.7134580124679134,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.34375,
+        "Dementia": 0.8571428571428571
+      },
+      "referred_by_class": [
+        3,
+        9,
+        3
+      ]
+    },
+    {
+      "split": "test",
+      "target_rate": 0.3,
+      "cutoff": 0.45514845848083496,
+      "referred": 0.19491525423728814,
+      "acc_kept": 0.7684210526315789,
+      "f1_kept": 0.6998711635869469,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.25925925925925924,
+        "Dementia": 0.92
+      },
+      "referred_by_class": [
+        3,
+        14,
+        6
+      ]
+    },
+    {
+      "split": "test",
+      "target_rate": 0.4,
+      "cutoff": 0.4706425964832306,
+      "referred": 0.2627118644067797,
+      "acc_kept": 0.7471264367816092,
+      "f1_kept": 0.5886412170628827,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.047619047619047616,
+        "Dementia": 0.9130434782608695
+      },
+      "referred_by_class": [
+        3,
+        20,
+        8
+      ]
+    },
+    {
+      "split": "test",
+      "target_rate": 0.5,
+      "cutoff": 0.517664909362793,
+      "referred": 0.3559322033898305,
+      "acc_kept": 0.7631578947368421,
+      "f1_kept": 0.5641420624732563,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.0,
+        "Dementia": 0.8947368421052632
+      },
+      "referred_by_class": [
+        5,
+        25,
+        12
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.0,
+      "cutoff": -1.0,
+      "referred": 0.0,
+      "acc_kept": 0.7222222222222222,
+      "f1_kept": 0.7024370988226409,
+      "recall_kept": {
+        "Normal": 0.9714285714285714,
+        "MCI": 0.45454545454545453,
+        "Dementia": 0.7272727272727273
+      },
+      "referred_by_class": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.1,
+      "cutoff": 0.4308513104915619,
+      "referred": 0.05555555555555555,
+      "acc_kept": 0.7294117647058823,
+      "f1_kept": 0.7058300395256918,
+      "recall_kept": {
+        "Normal": 0.9705882352941176,
+        "MCI": 0.43333333333333335,
+        "Dementia": 0.7619047619047619
+      },
+      "referred_by_class": [
+        1,
+        3,
+        1
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.2,
+      "cutoff": 0.443619042634964,
+      "referred": 0.14444444444444443,
+      "acc_kept": 0.7532467532467533,
+      "f1_kept": 0.7136424551058699,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.36,
+        "Dementia": 0.8421052631578947
+      },
+      "referred_by_class": [
+        2,
+        8,
+        3
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.3,
+      "cutoff": 0.45514845848083496,
+      "referred": 0.18888888888888888,
+      "acc_kept": 0.7534246575342466,
+      "f1_kept": 0.6915750915750914,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.2727272727272727,
+        "Dementia": 0.8888888888888888
+      },
+      "referred_by_class": [
+        2,
+        11,
+        4
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.4,
+      "cutoff": 0.4706425964832306,
+      "referred": 0.26666666666666666,
+      "acc_kept": 0.7272727272727273,
+      "f1_kept": 0.5783475783475783,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.058823529411764705,
+        "Dementia": 0.875
+      },
+      "referred_by_class": [
+        2,
+        16,
+        6
+      ]
+    },
+    {
+      "split": "test_no_overlap",
+      "target_rate": 0.5,
+      "cutoff": 0.517664909362793,
+      "referred": 0.36666666666666664,
+      "acc_kept": 0.7368421052631579,
+      "f1_kept": 0.5408547008547009,
+      "recall_kept": {
+        "Normal": 1.0,
+        "MCI": 0.0,
+        "Dementia": 0.8333333333333334
+      },
+      "referred_by_class": [
+        3,
+        20,
+        10
+      ]
+    }
+  ],
+  "listed_rate": 0.3,
+  "listed_cutoff": 0.45514845848083496,
+  "referred_test": [
+    {
+      "serial": "00551",
+      "age": 74,
+      "true": "MCI",
+      "pred": "N",
+      "probs": [
+        0.3986999988555908,
+        0.3950999975204468,
+        0.2062000036239624
+      ],
+      "confidence": 0.3987325131893158,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_amnestic_rf"
+      ]
+    },
+    {
+      "serial": "00049",
+      "age": 71,
+      "true": "N",
+      "pred": "N",
+      "probs": [
+        0.4050999879837036,
+        0.3596999943256378,
+        0.23520000278949738
+      ],
+      "confidence": 0.40508902072906494,
+      "symptom": [
+        "normal",
+        "cb_normal"
+      ]
+    },
+    {
+      "serial": "01213",
+      "age": 76,
+      "true": "D",
+      "pred": "MCI",
+      "probs": [
+        0.3799999952316284,
+        0.4156999886035919,
+        0.20430000126361847
+      ],
+      "confidence": 0.4157283306121826,
+      "symptom": [
+        "dementia",
+        "ad",
+        "load"
+      ]
+    },
+    {
+      "serial": "00953",
+      "age": 75,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.41940000653266907,
+        0.4203999936580658,
+        0.16019999980926514
+      ],
+      "confidence": 0.42037951946258545,
+      "symptom": [
+        "mci",
+        "mci_vascular"
+      ]
+    },
+    {
+      "serial": "00243",
+      "age": 65,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.3357999920845032,
+        0.42309999465942383,
+        0.2410999983549118
+      ],
+      "confidence": 0.423105925321579,
+      "symptom": [
+        "mci",
+        "mci_ad",
+        "mci_amnestic",
+        "mci_amnestic_ef"
+      ]
+    },
+    {
+      "serial": "01387",
+      "age": 83,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.1931000053882599,
+        0.42410001158714294,
+        0.38280001282691956
+      ],
+      "confidence": 0.42410337924957275,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_amnestic_rf"
+      ]
+    },
+    {
+      "serial": "00286",
+      "age": 61,
+      "true": "D",
+      "pred": "MCI",
+      "probs": [
+        0.3889999985694885,
+        0.4311999976634979,
+        0.17970000207424164
+      ],
+      "confidence": 0.43124160170555115,
+      "symptom": [
+        "dementia",
+        "ad",
+        "eoad"
+      ]
+    },
+    {
+      "serial": "00169",
+      "age": 74,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.33640000224113464,
+        0.43290001153945923,
+        0.23070000112056732
+      ],
+      "confidence": 0.43289121985435486,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_multi_domain"
+      ]
+    },
+    {
+      "serial": "01057",
+      "age": 78,
+      "true": "MCI",
+      "pred": "D",
+      "probs": [
+        0.14880000054836273,
+        0.4146000146865845,
+        0.436599999666214
+      ],
+      "confidence": 0.43664148449897766,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_amnestic_ef"
+      ]
+    },
+    {
+      "serial": "00659",
+      "age": 79,
+      "true": "N",
+      "pred": "MCI",
+      "probs": [
+        0.22779999673366547,
+        0.438400000333786,
+        0.33379998803138733
+      ],
+      "confidence": 0.4384344816207886,
+      "symptom": [
+        "normal",
+        "smi"
+      ]
+    },
+    {
+      "serial": "00475",
+      "age": 70,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.4357999861240387,
+        0.4392000138759613,
+        0.125
+      ],
+      "confidence": 0.4392140209674835,
+      "symptom": [
+        "mci",
+        "mci_amnestic"
+      ]
+    },
+    {
+      "serial": "01048",
+      "age": 75,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.2838999927043915,
+        0.4401000142097473,
+        0.2759999930858612
+      ],
+      "confidence": 0.44010648131370544,
+      "symptom": [
+        "mci",
+        "mci_non_amnestic"
+      ]
+    },
+    {
+      "serial": "01083",
+      "age": 79,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.3467999994754791,
+        0.44029998779296875,
+        0.21279999613761902
+      ],
+      "confidence": 0.4403463304042816,
+      "symptom": [
+        "mci",
+        "mci_amnestic"
+      ]
+    },
+    {
+      "serial": "00298",
+      "age": 78,
+      "true": "N",
+      "pred": "MCI",
+      "probs": [
+        0.21359999477863312,
+        0.4415000081062317,
+        0.3449000120162964
+      ],
+      "confidence": 0.4415077269077301,
+      "symptom": [
+        "normal",
+        "smi"
+      ]
+    },
+    {
+      "serial": "00203",
+      "age": 67,
+      "true": "D",
+      "pred": "N",
+      "probs": [
+        0.44190001487731934,
+        0.4348999857902527,
+        0.12319999933242798
+      ],
+      "confidence": 0.4418928325176239,
+      "symptom": [
+        "dementia",
+        "vd",
+        "sivd"
+      ]
+    },
+    {
+      "serial": "00004",
+      "age": 78,
+      "true": "D",
+      "pred": "D",
+      "probs": [
+        0.17739999294281006,
+        0.37689998745918274,
+        0.4456999897956848
+      ],
+      "confidence": 0.44569143652915955,
+      "symptom": [
+        "dementia",
+        "ad",
+        "load"
+      ]
+    },
+    {
+      "serial": "01330",
+      "age": 74,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.4327000081539154,
+        0.44600000977516174,
+        0.12129999697208405
+      ],
+      "confidence": 0.4459971487522125,
+      "symptom": [
+        "mci",
+        "mci_vascular"
+      ]
+    },
+    {
+      "serial": "00301",
+      "age": 80,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.2522999942302704,
+        0.4487000107765198,
+        0.29910001158714294
+      ],
+      "confidence": 0.4486517012119293,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_amnestic_rf"
+      ]
+    },
+    {
+      "serial": "00763",
+      "age": 76,
+      "true": "D",
+      "pred": "MCI",
+      "probs": [
+        0.21649999916553497,
+        0.4494999945163727,
+        0.33399999141693115
+      ],
+      "confidence": 0.449514776468277,
+      "symptom": [
+        "dementia",
+        "ad",
+        "load"
+      ]
+    },
+    {
+      "serial": "00259",
+      "age": 80,
+      "true": "D",
+      "pred": "MCI",
+      "probs": [
+        0.23240000009536743,
+        0.45179998874664307,
+        0.3156999945640564
+      ],
+      "confidence": 0.45181533694267273,
+      "symptom": [
+        "dementia",
+        "vd",
+        "sivd"
+      ]
+    },
+    {
+      "serial": "00565",
+      "age": 59,
+      "true": "MCI",
+      "pred": "D",
+      "probs": [
+        0.24279999732971191,
+        0.3034999966621399,
+        0.4537000060081482
+      ],
+      "confidence": 0.4536557197570801,
+      "symptom": [
+        "mci",
+        "mci_amnestic",
+        "mci_amnestic_ef"
+      ]
+    },
+    {
+      "serial": "00740",
+      "age": 79,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.36649999022483826,
+        0.4537999927997589,
+        0.17980000376701355
+      ],
+      "confidence": 0.4537745416164398,
+      "symptom": [
+        "mci",
+        "mci_vascular"
+      ]
+    },
+    {
+      "serial": "01335",
+      "age": 81,
+      "true": "MCI",
+      "pred": "MCI",
+      "probs": [
+        0.29249998927116394,
+        0.453900009393692,
+        0.25360000133514404
+      ],
+      "confidence": 0.45393383502960205,
+      "symptom": [
+        "mci",
+        "mci_vascular"
+      ]
+    }
+  ]
+}

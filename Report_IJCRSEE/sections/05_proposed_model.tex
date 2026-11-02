@@ -1,0 +1,71 @@
+\section{Proposed Model: SANF-Net}
+
+SANF-Net (\textbf{S}tate-\textbf{A}ware, age-\textbf{N}ormative \textbf{F}usion \textbf{Net}work) has three input
+branches combined by modality-gated fusion (Figure~\ref{fig:arch}). It has 143k parameters.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.85\textwidth}{!}{\input{figures/architecture}}
+\caption{SANF-Net. State-tagged EEG segments, age-normative biomarkers and age are encoded separately and
+combined by modality-gated fusion feeding a softmax and an ordinal head.}
+\label{fig:arch}
+\end{figure}
+
+\subsection{Architecture}
+
+\textbf{EEG branch.} A recording is a bag of 10\,s segments ($19 \times 1000$ samples) drawn from clean seconds
+by state: 60\% eyes-closed, 25\% eyes-open and 15\% photic (12 segments per recording in training, 24 at
+evaluation). A shared encoder applies three parallel temporal convolutions (0.11, 0.25 and 0.51\,s kernels,
+matching beta, alpha and delta--theta time scales), a depthwise spatial convolution over the 19 channels, a
+separable convolution with squeeze-and-excitation (SE), a temporal convolution with a second SE block, and
+mean and standard-deviation pooling to a 128-dimensional embedding $h$. Each embedding is modulated by its
+state $s$ with feature-wise linear modulation (FiLM) \citep{perez2018film}, $h' = h\odot(1+\gamma_s)+\beta_s$,
+and gated attention pooling \citep{ilse2018attention} combines the segments of a recording.
+
+\textbf{Biomarker and age branches.} The 48 normative $z$-scores pass through a two-layer perceptron
+(64-dimensional output) and standardised age through a small perceptron (16-dimensional). Age is an explicit
+input so that its contribution can be measured and ablated.
+
+\textbf{Modality-gated fusion.} Each branch is projected to 128 dimensions; a linear layer over the
+concatenated projections yields softmax gates $g$ over the three modalities, and the fused vector is
+$\sum_m g_m h_m$. The gates show how much each prediction relied on EEG, biomarkers or age. During training
+each modality is dropped with probability 0.15 (never all at once), so that no single input, particularly age,
+carries the model.
+
+\textbf{Two output heads.} Normal $<$ MCI $<$ Dementia is an ordered scale. Besides a softmax head, an ordinal
+cumulative-link head \citep{mccullagh1980regression} predicts a severity score $s_{\mathrm{sev}}$ and two
+ordered thresholds $t_1<t_2$, with $P(y>k)=\sigma(s_{\mathrm{sev}}-t_k)$. The class probabilities of the two
+heads are averaged.
+
+\subsection{Training}
+The loss is a class-weighted focal cross-entropy \citep{lin2017focal} ($\gamma=1.5$; weights 1.0 / 1.4 / 1.2 for
+Normal / MCI / Dementia; label smoothing 0.05) plus 0.5 times the cumulative binary cross-entropy of the
+ordinal head. We train for 35 epochs with AdamW (learning rate $10^{-3}$, weight decay 0.05, three-epoch
+warm-up and cosine decay), 16 recordings per batch, mixed precision, gradient clipping at 2.0 and an
+exponential moving average (EMA) of the weights (decay 0.995). Augmentation comprises amplitude scaling
+(0.9--1.1), Gaussian noise, channel dropout (0.1), biomarker noise and \emph{same-class bag mixing}: with
+probability 0.3, 25--50\% of a recording's segments are replaced by segments of another training recording
+with the same label. We evaluate the final EMA weights rather than selecting a checkpoint on the small
+validation set, whose 119 recordings make checkpoint selection noisy. One model trains in about 6 minutes on
+a laptop RTX~4050 GPU. Table~\ref{tab:hparams} summarises the configuration.
+
+\begin{table}[H]
+\centering
+\caption{SANF-Net configuration}
+\label{tab:hparams}
+\small
+\begin{tabular}{ll@{\hspace{2em}}ll}
+\toprule
+Setting & Value & Setting & Value\\
+\midrule
+Sampling rate & 100\,Hz & Parameters & 143k\\
+Band-pass & 0.5--45\,Hz & Epochs & 35\\
+Segment length & 10\,s ($19\times1000$) & Batch & 16 recordings\\
+Segments (train / eval) & 12 / 24 & Optimiser & AdamW, lr $10^{-3}$, wd 0.05\\
+State mix (EC / EO / photic) & 60 / 25 / 15\% & Loss & focal ($\gamma$ 1.5) + 0.5 ordinal\\
+Biomarkers & 48, age-normative & Class weights & 1.0 / 1.4 / 1.2\\
+Temporal kernels & 0.11 / 0.25 / 0.51\,s & Dropout / modality dropout & 0.3 / 0.15\\
+Embedding / fusion size & 128 / 128 & Weight averaging & EMA, decay 0.995\\
+\bottomrule
+\end{tabular}
+\end{table}

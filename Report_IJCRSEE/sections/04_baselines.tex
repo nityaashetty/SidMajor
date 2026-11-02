@@ -1,0 +1,48 @@
+\section{Baseline Models and Results}
+
+\subsection{Baseline Models}
+All baselines use exactly the same folds, per-fold normative refitting and per-recording scoring as the
+proposed model.
+
+\textbf{Tabular models.} Age alone; the 48 biomarkers, raw or normative; and normative biomarkers plus age.
+Each uses $L_2$-regularised, class-balanced logistic regression (LR), with the regularisation strength tuned by
+an inner five-fold cross-validation. The last set is also modelled with histogram gradient boosting (HGB).
+
+\textbf{Deep models on raw EEG.} EEGNet-8,2 \citep{lawhern2018eegnet} and a CEEDNet-style 1D-ResNet (four stages
+of two residual blocks on the raw 19 channels, age concatenated before the classifier, 2.3M parameters)
+\citep{kim2023caueeg}, both trained on random 10\,s crops. Both share the proposed model's data pipeline,
+loss, schedule, augmentation and weight averaging, and average segment logits per recording, so only the
+architecture differs. The 1D-ResNet follows CEEDNet's design but is not the authors' code or training recipe.
+
+\subsection{Baseline Results}
+Table~\ref{tab:baselines} lists the baselines. The tabular models are strong: age alone already reaches
+51.1\% (AUC 0.709), and logistic regression on normative biomarkers plus age reaches $59.3\pm0.7\%$ (AUC
+$0.778\pm0.004$). The deep models that see only raw EEG are weaker: EEGNet reaches 52.9\% (AUC 0.707) and the
+1D-ResNet 57.7\% (AUC 0.752). On the official test split the 1D-ResNet scores 61.0\%, below the published
+70.2\% for CEEDNet, which used larger models, longer training and test-time augmentation.
+
+\begin{table}[H]
+\centering
+\caption{Baseline results (per recording). Cross-validation: five-fold out-of-fold, $n=1069$ (mean $\pm$
+s.d.\ over five fold assignments where marked $^\ast$). Test: official test split, $n=118$, mean of the five
+fold models}
+\label{tab:baselines}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Cross-validation} & \multicolumn{3}{c}{Official test}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & Acc & BAcc & AUC & Acc & BAcc & AUC\\
+\midrule
+Age (LR)$^\ast$ & $51.1\pm0.2$ & $51.6\pm0.2$ & $.709\pm.002$ & 55.1 & 54.6 & .739\\
+Biomarkers, raw (LR) & 56.0 & 56.0 & .761 & 63.6 & 63.5 & .815\\
+Biomarkers, normative (LR) & 58.1 & 58.1 & .761 & 62.7 & 63.2 & .809\\
+Normative biomarkers + age (LR)$^\ast$ & $59.3\pm0.7$ & $59.3\pm0.7$ & $.778\pm.004$ & 66.1 & 65.9 & .839\\
+Normative biomarkers + age (HGB) & 59.2 & 58.9 & .779 & 61.0 & 60.2 & .813\\
+EEGNet & 52.9 & 51.5 & .707 & 60.2 & 58.0 & .773\\
+1D-ResNet (CEEDNet-style) & 57.7 & 57.1 & .752 & 61.0 & 60.0 & .810\\
+\bottomrule
+\end{tabular}\\[2pt]
+\parbox{\textwidth}{\scriptsize Acc: accuracy (\%); BAcc: balanced accuracy (\%); AUC: macro one-vs-rest area under
+the ROC curve; LR: logistic regression; HGB: histogram gradient boosting.}
+\end{table}

@@ -1,0 +1,44 @@
+\section{Introduction}
+
+Dementia affects about 57 million people worldwide, a number projected to rise to about 153 million by 2050
+\citep{who2023dementia}; in India alone, cases are expected to grow from 5.1 million in 2021 to more than 20
+million by 2050. Mild cognitive impairment (MCI) is the main prodromal stage of dementia \citep{petersen2004mci},
+and it is the window in which intervention is most useful. Neuropsychological testing, magnetic resonance
+imaging (MRI), positron emission tomography and cerebrospinal fluid biomarkers are costly, invasive or scarce
+outside large hospitals. Scalp electroencephalography (EEG), in contrast, is cheap, portable, non-invasive and
+widely available. Alzheimer's-type dementia produces well-documented EEG changes: slowing of the background
+rhythm, reduced posterior alpha, increased theta and delta power, and reduced coherence
+\citep{jeong2004eeg,dauwels2010diagnosis,babiloni2020measures}.
+
+The CAUEEG dataset \citep{kim2023caueeg} is one of the largest public clinical EEG collections with a
+Normal / MCI / Dementia benchmark. Results on it are, however, hard to interpret for four reasons. First,
+clinical EEG slowing is read during eyes-closed rest, yet recordings also contain eyes-open periods, photic
+(flashing-light) stimulation and hyperventilation, and random crops mix these states. Second, per-segment
+scoring, or splits that share patients, inflate accuracy relative to per-recording, patient-disjoint
+evaluation \citep{saeb2017voice}. Third, a 118-recording test set has a 95\% confidence interval of roughly
+$\pm 9$ accuracy points \citep{varoquaux2018cross}. Fourth, deep models are rarely compared with a well-tuned
+tabular model of established EEG markers under the same protocol, and rarely tested at another site. The
+published models are also large (11--87 million parameters per model and 254 million for an ensemble), which
+limits deployment on portable hardware.
+
+\subsection{Objectives}
+The objectives of this work are:
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=2pt]
+\item to analyse the CAUEEG dataset in depth and make its recording-state annotations usable;
+\item to design a lightweight, interpretable deep learning model for three-class Normal / MCI / Dementia
+      classification;
+\item to compare it with tabular and deep learning baselines trained under exactly the same protocol;
+\item to validate the model on independent datasets without retraining; and
+\item to present the predictions through a clinician-facing dashboard.
+\end{enumerate}
+
+\subsection{Contributions}
+(1) A verified correction of CAUEEG event timing and a per-second state and artifact timeline.
+(2) SANF-Net, a state-aware, age-normative fusion network of 143k parameters that uses alpha-reactivity and
+photic-driving biomarkers, which can only be computed with the corrected clock. An ensemble of three SANF-Net
+models reaches 72.9\% accuracy on the official test split.
+(3) The identification of a photic-stimulation protocol confound between the Normal subgroups, separated from
+the age confound by age matching.
+(4) A patient-disjoint, per-recording evaluation with repeated five-fold cross-validation, bootstrap
+confidence intervals, tabular and deep baselines, ablations, and external testing on two independent MCI
+cohorts.

@@ -1,0 +1,6 @@
+[23:44:51] analyze_oof: 'A_noprotocol_cv5' - rebuilding out-of-fold predictions from 5 fold models
+[23:45:16]   A_noprotocol_cv5 CV out-of-fold    n=1069 acc  57.1% bal  56.1% AUC 0.764 | recall N/MCI/D 78/36/54 | Normal recall: community 90% (n=229) vs SMI 64% (n=171) | AUC impaired: SMI-vs-MCI 0.649, community-vs-MCI 0.852, N-vs-MCI <70 0.668, >=70 0.651
+[23:45:16]   A_noprotocol_cv5 test (5-fold ens) n= 118 acc  62.7% bal  61.8% AUC 0.826 | recall N/MCI/D 96/22/68 | Normal recall: community 100% (n=31) vs SMI 87% (n=15) | AUC impaired: SMI-vs-MCI 0.792, community-vs-MCI 0.848, N-vs-MCI <70 0.720, >=70 0.781
+[23:45:16] analyze_oof: 'B_eyesclosed_cv5' - rebuilding out-of-fold predictions from 5 fold models
+[23:45:31]   B_eyesclosed_cv5 CV out-of-fold    n=1069 acc  58.5% bal  58.1% AUC 0.756 | recall N/MCI/D 77/36/61 | Normal recall: community 87% (n=229) vs SMI 64% (n=171) | AUC impaired: SMI-vs-MCI 0.650, community-vs-MCI 0.842, N-vs-MCI <70 0.632, >=70 0.681
+[23:45:31]   B_eyesclosed_cv5 test (5-fold ens) n= 118 acc  65.3% bal  65.1% AUC 0.818 | recall N/MCI/D 93/24/77 | Normal recall: community 97% (n=31) vs SMI 87% (n=15) | AUC impaired: SMI-vs-MCI 0.766, community-vs-MCI 0.832, N-vs-MCI <70 0.706, >=70 0.707

@@ -1,0 +1,91 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# =========================
+# Data Files (VERY IMPORTANT)
+# =========================
+# EEG datasets and precomputed features — never push these
+*.edf
+*.csv
+*.parquet
+*.npz
+caueeg-dataset/
+
+# =========================
+# Model Checkpoints
+# =========================
+*.pth
+*.pt
+*.ckpt
+
+# =========================
+# All Training Outputs
+# =========================
+outputs/
+logs/
+*.log
+
+# =========================
+# WandB
+# =========================
+wandb/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Plotting / Figures
+# =========================
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# =========================
+# Cache / Temp
+# =========================
+.cache/
+temp/
+tmp/
+
+# =========================
+# Python Packaging
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*

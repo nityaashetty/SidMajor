@@ -1,0 +1,64 @@
+# Approach 6 -- STFT spectrogram CNN.
+# Measured on an RTX 4050 Laptop (6.44 GB): 1768 samp/s, 0.66 GB at batch 64
+# (that benchmark used a 2-conv stack; the 3-stage stack below is heavier -- re-check
+#  with scripts/00_verify.py, which prints the real peak VRAM for YOUR card).
+# STFT runs on the GPU inside forward(): 13.6 ms per batch of 64, ~0.2 s per epoch.
+#
+# n_fft: 128 IS LOAD-BEARING. The Phase-2 notes say 64, which is 3.125 Hz/bin and cannot
+# separate theta (4-8 Hz) from alpha (8-13 Hz) -- the strongest signal in this dataset
+# (class means 0.94 / 1.31 / 1.98). 128 gives 1.56 Hz/bin and matches the CAUEEG paper's
+# own win_len formula (126 for T=2000). Do not lower it.
+
+approach: stft_cnn
+
+paths:
+  dataset_root: null
+  cache_dir: null
+  output_dir: outputs
+
+data:
+  task: dementia
+  crop_seconds: 10.0
+  t0_seconds: 10.0
+  train_views: 1
+  eval_views: 8
+  train_repeats: 8
+  sampling: auto
+  normalize: trainset
+  noise_awgn: 0.02
+  noise_mwgn: 0.02
+
+model:
+  num_classes: 3
+  n_fft: 128                  # 1.56 Hz/bin. NOT 64 -- see header.
+  hop: 8                      # -> 251 frames from a 2000-sample crop
+  fmax_hz: 45.0               # drop >45 Hz: outside the biomarker range, removes mains hum
+  widths: [32, 64, 128]
+  spatial_first: false        # true = learned spatial filter before the 2D stack
+  spatial_filters: 32
+  dropout: 0.25
+  embed_dim: 64
+  head_hidden: 64
+  head_dropout: 0.5
+  use_age: true               # SET false FOR THE AGE ABLATION
+  norm: batch
+
+train:
+  epochs: 100
+  batch_size: 32              # raise to 64 if 00_verify.py shows headroom
+  eval_batch_size: 16         # eval carries 8 views per item
+  lr: 1.0e-3
+  lr_min: 1.0e-6
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  label_smoothing: 0.0
+  amp: true
+  min_epochs: 15
+  early_stop_patience: 25
+  select_metric: macro_f1
+  deterministic: false
+  seed: 0
+  seeds: [0, 1, 2, 3, 4]
+
+runtime:
+  num_workers: 4

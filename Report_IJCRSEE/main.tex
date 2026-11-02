@@ -1,0 +1,124 @@
+% =============================================================================
+% IJCRSEE-format report: SANF-Net for EEG-based dementia and MCI detection
+% Layout follows the IJCRSEE Word template (IJCRSEEtemplate.doc):
+%   A4, margins 2.5 cm, header/footer 1.5 cm, single spacing, justified,
+%   Arial Narrow (here: Helvetica Narrow) 16 pt title, 10 pt abstract/keywords,
+%   12 pt body, 10 pt hanging references, APA citations, max. three heading levels.
+% Compile: tectonic main.tex   (or pdfLaTeX + BibTeX on Overleaf)
+% Each section lives in sections/*.tex
+% =============================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,
+            headsep=0.6cm,footskip=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=1.0]{helvet}            % Helvetica stands in for Arial
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\mddefault}{mc}               % narrow (condensed) medium weight
+\renewcommand{\bfdefault}{bc}               % narrow bold
+\usepackage{sansmath}\sansmath
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,multirow,array,tabularx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage[round,authoryear]{natbib}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{float}
+
+% --- placeholders (remove all before submission) ------------------------------
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+% --- paragraphs: justified, single spaced, no space between paragraphs -------
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.25cm}
+\linespread{1.0}
+
+% --- headings: max three levels, bold, no numbering (IJCRSEE style) ----------
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\normalfont\fontsize{12}{14}\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries\itshape}{}{0pt}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{12}{14}\itshape}{}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{9pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
+
+% --- tables and figures: "Table 1" on its own line, caption below it ---------
+\captionsetup[table]{labelsep=newline,justification=raggedright,singlelinecheck=false,
+                     font={small},labelfont=bf,textfont=it}
+\captionsetup[figure]{labelsep=period,font={small},labelfont=bf}
+
+% --- references: 10 pt, hanging indent ----------------------------------------
+\setlength{\bibsep}{2pt}
+\renewcommand{\bibfont}{\fontsize{10}{12}\selectfont}
+\setlength{\bibhang}{1.25cm}
+
+% --- page style ------------------------------------------------------------------
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small\thepage}
+\fancyhead[R]{\footnotesize Raut, S. et al. (2026). State-aware age-normative EEG classification of dementia}
+
+\begin{document}
+
+% ============================ title block =======================================
+\thispagestyle{empty}
+\noindent{\footnotesize
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+\textbf{Original scientific paper} & UDC: \todo{assigned by journal}\\
+Received: xxx, xx.2026. & doi: 10.23947/2334-8496-xxx\\
+Revised: xxx, xx.2026. & \\
+Accepted: xxx, xx.2026. & \\
+\end{tabularx}}
+
+\vspace{10pt}
+\begin{center}
+{\fontsize{16}{19}\selectfont\bfseries State-Aware, Age-Normative Electroencephalography Classification of Mild
+Cognitive Impairment and Dementia with a Lightweight Fusion Network\par}
+\vspace{10pt}
+{\fontsize{12}{14}\selectfont Sanchit Raut$^{1}$, Siddarth Potdar$^{1*}$, Vedant Kannurkar$^{1}$\par}
+\vspace{4pt}
+{\fontsize{10}{12}\selectfont $^{1}$Department of Computer Science and Engineering, Sardar Patel Institute of
+Technology, Mumbai, India, \{sanchit.raut23, siddarth.potdar23, vedant.kannurkar24\}@spit.ac.in\par}
+\end{center}
+
+\vspace{6pt}
+{\fontsize{10}{12}\selectfont\setlength{\parindent}{0pt}
+\input{sections/00_abstract}
+\par}
+
+% first-page footnote (corresponding author + licence), as in the template
+\begingroup
+\renewcommand{\thefootnote}{}
+\footnotetext{\hspace{-1.8em}\footnotesize *Corresponding author: siddarth.potdar23@spit.ac.in\\[2pt]
+\copyright\ 2026 by the authors. This article is an open access article distributed under the terms and
+conditions of the Creative Commons Attribution (CC BY) license
+(\url{https://creativecommons.org/licenses/by/4.0/}).}
+\endgroup
+
+% ============================== body ============================================
+\input{sections/01_introduction}
+\input{sections/02_literature_survey}
+\input{sections/03_materials_methods}
+\input{sections/04_baselines}
+\input{sections/05_proposed_model}
+\input{sections/06_ensemble_results}
+\input{sections/07_dashboard}
+\input{sections/08_discussion}
+\input{sections/09_conclusions}
+\input{sections/10_declarations}
+
+% ============================ references ========================================
+\renewcommand{\bibsection}{\section{References}}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

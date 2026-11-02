@@ -1,0 +1,13 @@
+[23:42:37] eval 'B_eyesclosed_cv5' fold0 [final]: held-out fold acc 57.01% | test acc 61.86%  bal 59.22%  F1 0.5862  AUC 0.7675 | no-overlap acc 62.22%
+[23:43:11] eval 'B_eyesclosed_cv5' fold1 [final]: held-out fold acc 59.81% | test acc 61.86%  bal 62.55%  F1 0.5828  AUC 0.7924 | no-overlap acc 58.89%
+[23:43:41] eval 'B_eyesclosed_cv5' fold2 [final]: held-out fold acc 60.28% | test acc 64.41%  bal 63.85%  F1 0.6155  AUC 0.8163 | no-overlap acc 64.44%
+[23:44:13] eval 'B_eyesclosed_cv5' fold3 [final]: held-out fold acc 55.61% | test acc 61.02%  bal 61.21%  F1 0.5883  AUC 0.7927 | no-overlap acc 61.11%
+[23:44:44] eval 'B_eyesclosed_cv5' fold4 [final]: held-out fold acc 59.62% | test acc 61.86%  bal 61.67%  F1 0.5925  AUC 0.8018 | no-overlap acc 61.11%
+[23:44:44] ===== 'B_eyesclosed_cv5' [final] (5 folds) =====
+[23:44:44]   CV out-of-fold   (n=1069) : acc 58.47%  bal 58.11%  F1 0.5690  AUC 0.7562
+[23:44:44]   test             mean+/-std : acc 62.20+/-1.15%  F1 0.5930+/-0.0117  AUC 0.7941
+[23:44:44]   test             seed-ens : acc 65.25%  bal 65.10%  F1 0.6115  AUC 0.8175
+[23:44:44]   test_no_overlap  mean+/-std : acc 61.56+/-1.81%  F1 0.5907+/-0.0205  AUC 0.7819
+[23:44:44]   test_no_overlap  seed-ens : acc 62.22%  bal 62.24%  F1 0.5812  AUC 0.8062
+[23:44:44]   test confusion (rows=true N/MCI/D): [[43, 2, 1], [20, 10, 11], [5, 2, 24]] | gates by class: Normal: eeg=0.38, bio=0.14, age=0.48; MCI: eeg=0.34, bio=0.30, age=0.36; Dementia: eeg=0.35, bio=0.41, age=0.24
+[23:44:44]   saved C:\Users\potda\Desktop\Major_Project_Final\Ablation_PhoticConfound\B_eyesclosed\artifacts\runs\B_eyesclosed_cv5\results.json

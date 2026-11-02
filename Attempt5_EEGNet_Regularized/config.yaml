@@ -1,0 +1,61 @@
+# Attempt 5 -- Approach 1 (EEGNet, identical model + data) with ONLY the training recipe
+# changed, following the CEEDNet paper (Kim et al. 2023, Sec 3.3 + Table B.1):
+#   1. weight_decay 1e-4 -> 5e-2   (paper's tuned 1D models: 4e-2 .. 7e-2)
+#   2. MixUp alpha 0.2             (paper: 0.1-0.3)
+#   3. no early stopping; full cosine schedule; primary model = EMA weights at the end
+#      (final.pt), not the best-val-epoch pick (best.pt is still saved for comparison)
+
+approach: eegnet_attempt5
+
+paths:
+  dataset_root: null          # null -> $CAUEEG_ROOT, else search upward for caueeg-dataset/
+  cache_dir: null             # null -> ../_cache/eeg_fp16  (shared with other approaches)
+  output_dir: outputs
+
+data:
+  task: dementia              # dementia | dementia-no-overlap
+  crop_seconds: 10.0          # 2000 samples @ 200 Hz, as in Phase 1 and the CAUEEG paper
+  t0_seconds: 10.0            # skip sensor settling; the paper uses T0=2000 and Phase 1 did not
+  train_views: 1              # one fresh random crop per sample
+  eval_views: 8               # 8 deterministic crops, logit-averaged (TTA)
+  train_repeats: 8            # 950 x 8 = 7600 samples/epoch, all freshly cropped each epoch
+  sampling: auto
+  normalize: trainset         # trainset (paper) | percrop (Phase-1 behaviour, ablation only)
+  noise_awgn: 0.02            # paper Sec 3.2 additive white Gaussian noise
+  noise_mwgn: 0.02            # paper Sec 3.2 multiplicative white Gaussian noise
+
+model:
+  num_classes: 3
+  n_branches: 1               # 1 = one encoder. Set 4 to reproduce the Phase-2 notes' version.
+  F1: 8                       # original EEGNet-v4 (notes used 16/32, ~4x larger)
+  D: 2
+  F2: 16
+  kern_len: 101               # fs/2 at 200 Hz
+  dropout: 0.25
+  embed_dim: 64
+  head_hidden: 64
+  head_dropout: 0.5
+  use_age: true               # SET false FOR THE AGE ABLATION -- report both
+  norm: batch                 # batch is fine here; batch_size is 64
+
+train:
+  epochs: 150                 # A5: full schedule always runs (A1 stopped at ep 46-92)
+  batch_size: 64
+  eval_batch_size: 32         # eval carries 8 views per item
+  lr: 1.0e-3
+  lr_min: 1.0e-6
+  weight_decay: 5.0e-2        # A5: was 1e-4. Conv/linear weights only, see engine.py
+  mixup_alpha: 0.2            # A5: new
+  ema_decay: 0.999            # A5: new. ~1000-step horizon = ~8.5 epochs at 118 steps/ep
+  grad_clip: 1.0
+  label_smoothing: 0.0
+  amp: true
+  min_epochs: 15
+  early_stop_patience: 1000   # A5: off. best.pt still saved (raw weights, best val F1)
+  select_metric: macro_f1     # NOT accuracy: classes are 367/334/249
+  deterministic: false
+  seed: 0
+  seeds: [0, 1, 2, 3, 4]
+
+runtime:
+  num_workers: 4              # lower to 0 if Windows DataLoader workers misbehave

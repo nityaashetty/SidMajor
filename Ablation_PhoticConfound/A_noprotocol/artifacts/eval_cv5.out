@@ -1,0 +1,13 @@
+[23:11:41] eval 'A_noprotocol_cv5' fold0 [final]: held-out fold acc 52.80% | test acc 58.47%  bal 56.58%  F1 0.5481  AUC 0.7655 | no-overlap acc 55.56%
+[23:12:10] eval 'A_noprotocol_cv5' fold1 [final]: held-out fold acc 61.21% | test acc 64.41%  bal 64.11%  F1 0.6067  AUC 0.8166 | no-overlap acc 62.22%
+[23:12:41] eval 'A_noprotocol_cv5' fold2 [final]: held-out fold acc 57.01% | test acc 61.86%  bal 61.32%  F1 0.5970  AUC 0.8176 | no-overlap acc 60.00%
+[23:13:20] eval 'A_noprotocol_cv5' fold3 [final]: held-out fold acc 55.14% | test acc 64.41%  bal 63.85%  F1 0.6119  AUC 0.8047 | no-overlap acc 61.11%
+[23:14:01] eval 'A_noprotocol_cv5' fold4 [final]: held-out fold acc 59.15% | test acc 61.86%  bal 60.10%  F1 0.5910  AUC 0.8003 | no-overlap acc 61.11%
+[23:14:01] ===== 'A_noprotocol_cv5' [final] (5 folds) =====
+[23:14:01]   CV out-of-fold   (n=1069) : acc 57.06%  bal 56.09%  F1 0.5531  AUC 0.7639
+[23:14:01]   test             mean+/-std : acc 62.20+/-2.18%  F1 0.5909+/-0.0226  AUC 0.8009
+[23:14:01]   test             seed-ens : acc 62.71%  bal 61.78%  F1 0.5818  AUC 0.8263
+[23:14:01]   test_no_overlap  mean+/-std : acc 60.00+/-2.33%  F1 0.5677+/-0.0278  AUC 0.7828
+[23:14:01]   test_no_overlap  seed-ens : acc 60.00%  bal 59.15%  F1 0.5516  AUC 0.8097
+[23:14:01]   test confusion (rows=true N/MCI/D): [[44, 2, 0], [22, 9, 10], [5, 5, 21]] | gates by class: Normal: eeg=0.31, bio=0.16, age=0.54; MCI: eeg=0.33, bio=0.30, age=0.37; Dementia: eeg=0.39, bio=0.37, age=0.24
+[23:14:01]   saved C:\Users\potda\Desktop\Major_Project_Final\Ablation_PhoticConfound\A_noprotocol\artifacts\runs\A_noprotocol_cv5\results.json

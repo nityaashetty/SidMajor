@@ -1,0 +1,8 @@
+# keep run results/configs/logs; drop data stores, features and checkpoints
+artifacts/*
+!artifacts/runs/
+!artifacts/*.out
+artifacts/runs/**/*.pt
+artifacts/runs/**/*.npy
+__pycache__/
+*.py[cod]

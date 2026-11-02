@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+_cache/
+Approach*/outputs/
+*.pth
+*.pt
+*.npz
+*.dat
+.claude/
+
+# raw data (too large for GitHub; download separately)
+caueeg-dataset/
+external_datasets/
+# model checkpoints, arrays, signal files
+*.npy
+*.ckpt
+*.h5
+*.edf
+*.bdf
+*.set
+*.fdt
+*.vhdr
+*.eeg
+*.feather
+*.parquet
+*.pkl
+# Office lock / temp files
+~$*

@@ -1,0 +1,26 @@
+[23:07:01] train: run 'A_noprotocol_cv5' on NVIDIA GeForce RTX 4050 Laptop GPU | 5 folds | overrides ['train.num_workers=2']
+[23:07:01] fold 0: 855 train / 214 held-out recordings
+[23:07:02] fold0: already finished - skipping
+[23:07:02] fold 1: 855 train / 214 held-out recordings
+[23:07:02] fold1: already finished - skipping
+[23:07:02] fold 2: 855 train / 214 held-out recordings
+[23:07:03] fold2: already finished - skipping
+[23:07:03] fold 3: 855 train / 214 held-out recordings
+[23:07:03] fold3: already finished - skipping
+[23:07:03] fold 4: 856 train / 213 held-out recordings
+[23:07:08] fold4: resumed at epoch 13
+[23:07:40] fold4 ep  14/35 loss 0.9310 train 57.8% | val(EMA) 55.9% F1 0.5450 AUC 0.763 | gates {'eeg': 0.166, 'bio': 0.244, 'age': 0.59} | 31.5s *best*
+[23:07:46] fold4 ep  15/35 loss 0.8680 train 61.8% | val(EMA) 55.9% F1 0.5469 AUC 0.764 | gates {'eeg': 0.184, 'bio': 0.259, 'age': 0.556} | 6.4s *best*
+[23:07:52] fold4 ep  16/35 loss 0.8764 train 61.2% | val(EMA) 55.9% F1 0.5487 AUC 0.761 | gates {'eeg': 0.166, 'bio': 0.256, 'age': 0.578} | 5.5s *best*
+[23:08:16] fold4 ep  19/35 loss 0.8359 train 65.8% | val(EMA) 56.3% F1 0.5547 AUC 0.764 | gates {'eeg': 0.202, 'bio': 0.285, 'age': 0.513} | 9.9s *best*
+[23:08:26] fold4 ep  20/35 loss 0.8156 train 65.4% | val(EMA) 57.7% F1 0.5694 AUC 0.768 | gates {'eeg': 0.208, 'bio': 0.283, 'age': 0.51} | 9.9s *best*
+[23:08:36] fold4 ep  21/35 loss 0.8323 train 67.0% | val(EMA) 55.9% F1 0.5490 AUC 0.766 | gates {'eeg': 0.214, 'bio': 0.3, 'age': 0.486} | 9.8s
+[23:09:36] fold4 ep  26/35 loss 0.8058 train 64.7% | val(EMA) 56.3% F1 0.5519 AUC 0.767 | gates {'eeg': 0.246, 'bio': 0.349, 'age': 0.405} | 10.0s
+[23:09:46] fold4 ep  27/35 loss 0.8089 train 64.9% | val(EMA) 58.2% F1 0.5722 AUC 0.776 | gates {'eeg': 0.242, 'bio': 0.302, 'age': 0.455} | 9.9s *best*
+[23:09:56] fold4 ep  28/35 loss 0.8247 train 67.0% | val(EMA) 59.2% F1 0.5827 AUC 0.776 | gates {'eeg': 0.245, 'bio': 0.302, 'age': 0.453} | 9.9s *best*
+[23:10:06] fold4 ep  29/35 loss 0.8122 train 65.1% | val(EMA) 59.6% F1 0.5866 AUC 0.778 | gates {'eeg': 0.254, 'bio': 0.294, 'age': 0.452} | 9.9s *best*
+[23:10:26] fold4 ep  31/35 loss 0.7844 train 67.9% | val(EMA) 59.6% F1 0.5873 AUC 0.776 | gates {'eeg': 0.265, 'bio': 0.278, 'age': 0.458} | 9.9s *best*
+[23:10:36] fold4 ep  32/35 loss 0.7709 train 67.3% | val(EMA) 60.1% F1 0.5927 AUC 0.776 | gates {'eeg': 0.271, 'bio': 0.277, 'age': 0.451} | 9.9s *best*
+[23:11:06] fold4 ep  35/35 loss 0.7938 train 65.9% | val(EMA) 59.2% F1 0.5825 AUC 0.773 | gates {'eeg': 0.285, 'bio': 0.269, 'age': 0.446} | 10.0s
+[23:11:06] fold4: finished. best val F1 0.5927; final EMA val F1 0.5825
+[23:11:07] train: run 'A_noprotocol_cv5' complete -> python scripts/05_evaluate.py --name A_noprotocol_cv5

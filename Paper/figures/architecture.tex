@@ -1,0 +1,45 @@
+% SANF-Net architecture (TikZ). Included from main.tex with \input{figures/architecture}.
+\begin{tikzpicture}[
+  font=\scriptsize, >=stealth,
+  blk/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=2pt,
+              minimum height=8mm, text width=#1},
+  blk/.default=19mm,
+  arr/.style={->, draw=black!65, line width=0.5pt}]
+\def\ya{0} \def\yb{-1.15} \def\yc{-2.1}
+
+% inputs
+\node[blk, fill=blue!8]    (seg) at (0,\ya) {EEG segments\\$19{\times}1000$, state $s$};
+\node[blk, fill=orange!10] (bm)  at (0,\yb) {48 normative\\biomarkers $z$};
+\node[blk, fill=black!6]   (ag)  at (0,\yc) {age};
+
+% branches
+\node[blk=16mm, fill=blue!8]    (enc)  at (2.25,\ya) {multi-scale\\CNN + SE};
+\node[blk=10mm, fill=blue!8]    (film) at (3.75,\ya) {FiLM\\($s$)};
+\node[blk=12mm, fill=blue!8]    (pool) at (5.15,\ya) {gated\\attention};
+\node[blk=16mm, fill=orange!10] (bmlp) at (2.25,\yb) {MLP $\to$ 64};
+\node[blk=16mm, fill=black!6]   (amlp) at (2.25,\yc) {MLP $\to$ 16};
+
+% fusion (spans the biomarker and age rows)
+\node[draw=black!60, rounded corners=1.5pt, fill=teal!10, align=center, text width=14mm,
+      minimum height=19mm] (fuse) at (5.15,{(\yb+\yc)/2}) {modality-\\gated\\fusion\\[1pt]$\sum_m g_m h_m$};
+
+% heads and output
+\node[blk=15mm, fill=teal!10] (soft) at (7.05,\yb) {softmax\\(focal CE)};
+\node[blk=15mm, fill=teal!10] (ord)  at (7.05,\yc) {ordinal\\$\sigma(s_{\mathrm{sev}}{-}t_k)$};
+\node[draw=black!60, rounded corners=1.5pt, align=center, text width=15mm, minimum height=8mm]
+      (out) at (9.0,{(\yb+\yc)/2}) {average\\N/MCI/D};
+
+\draw[arr] (seg) -- (enc);
+\draw[arr] (enc) -- (film);
+\draw[arr] (film) -- (pool);
+\draw[arr] (pool) -- (fuse);
+\draw[arr] (bm) -- (bmlp);
+\draw[arr] (ag) -- (amlp);
+\draw[arr] (bmlp) -- (bmlp -| fuse.west);
+\draw[arr] (amlp) -- (amlp -| fuse.west);
+\draw[arr] (fuse.east |- soft) -- (soft);
+\draw[arr] (fuse.east |- ord) -- (ord);
+\draw[arr] (soft.east) -- (out);
+\draw[arr] (ord.east) -- (out);
+\node[font=\tiny, color=black!60, above=0.3mm of enc] {shared over 12--24 segments};
+\end{tikzpicture}

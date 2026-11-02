@@ -1,0 +1,40 @@
+\section{Discussions}
+
+\textbf{A compact model at benchmark level.} The SANF-Net ensemble reaches 72.9\% accuracy and an AUC of 0.87 on
+the official test split with 429k parameters, above CEEDNet's best single model and close to its nine-model
+ensemble, which is about 590 times larger. A model of this size trains in minutes on a laptop GPU and is
+suitable for portable or primary-care hardware, which is where an EEG-based screen is most useful. Its
+clinical error profile is favourable for screening: almost all healthy participants are recognised, no healthy
+participant is labelled as demented, and when MCI is predicted it is usually correct.
+
+\textbf{The recording state matters.} Correcting the event clock was a prerequisite for state-aware sampling,
+for the alpha-reactivity and photic-driving biomarkers, and for detecting the protocol confound. State-aware
+sampling gives a significant AUC gain over random crops, and the gates make each prediction's reliance on EEG,
+biomarkers and age visible.
+
+\textbf{Architecture versus features.} Under cross-validation SANF-Net matches, but does not beat, logistic
+regression on the same normative biomarkers, and it beats the EEG-only deep baselines mainly because it also
+sees the biomarkers and age: its own EEG-only ablation lies between EEGNet and the 1D-ResNet. Gains on this
+benchmark should therefore always be compared against a strong tabular model of established markers under the
+same protocol. SANF-Net's advantage over the linear model is that it relies far less on the protocol shortcut.
+
+\textbf{Much of the MCI signal is age and protocol.} The MCI-versus-Normal AUCs on CAUEEG mix age, recording
+protocol and EEG physiology. After age matching, distinguishing a patient with memory complaints who does or
+does not have MCI reaches only 0.54--0.57, consistent with the overlapping feature distributions reported by
+\citet{geneeg2025}. Results on this dataset should be reported per Normal subgroup and with age-matched
+comparisons.
+
+\textbf{Single splits mislead.} The official test split is about 8 points easier than the pooled data, and a
+118-recording test set carries an interval of about $\pm8$ points. Cross-validated results with repeated fold
+assignments should accompany any official-test number.
+
+\textbf{Transfer.} Without retraining or age information, the model keeps useful MCI discrimination on Isfahan
+(AUC 0.67--0.76) and recognises most healthy participants at new sites, but transfers little to GENEEG, whose
+montage and protocol differ more. Re-centring normative references on a site's own normals is cheap and
+label-free.
+
+\textbf{Limitations.} Training data come from a single hospital. The model design was developed on the
+official split and the official test set was consulted during development, which is one reason
+cross-validated results are reported alongside it. Subgroup labels rely on the dataset's symptom codes, and the
+community-with-photic subgroup is small. The external cohorts are small, lack ages and state annotations, and
+were not recorded with the CAUEEG protocol. Diagnoses are clinical, without biomarker confirmation.

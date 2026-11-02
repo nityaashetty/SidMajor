@@ -120,6 +120,7 @@ Each is a measured problem in `ProjectAttempt1/`, not a stylistic preference.
 Note: the 77.32% / 79.16% figures in `QSFE_NET_FULL_CONTEXT.md` are from CAUEEG-**Abnormal**,
 a different (binary) task. The correct comparison for this 3-class work is 74.66% / 70.18%.
 
+
 ---
 
 ## Reporting checklist
@@ -134,3 +135,6 @@ Run each of these; they are cheap and they are what referees will ask for.
 4. 5 seeds, mean±std. Never a single best number.
 5. Confirm `core checksum` from `00_verify.py` matches on all three devices before
    comparing results.
+
+
+```demo```

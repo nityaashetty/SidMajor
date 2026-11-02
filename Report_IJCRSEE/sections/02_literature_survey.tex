@@ -16,22 +16,22 @@ reviewed studies validates on an independent dataset.
 Study & Data & Method & Reported result & Limitation\\
 \midrule
 \multicolumn{5}{@{}l}{\textit{MRI-based approaches}}\\
-El-Assy et al. (2024) & ADNI & Dual CNN branches with different filter sizes, concatenated; 3/4/5-class & 99.43\%, 99.57\%, 99.13\% & Possible overfitting; no cross-dataset validation; limited explainability\\
-Odimayo et al. (2024) & ADNI + OASIS & Structure-focused CNN, gamma correction, midsagittal and parasagittal planes & 97--98\% & Specific MRI planes only; high computational cost; limited generalisation testing\\
-Mousavi et al. (2025) & ADNI-derived MRI (6,735 images) & Transfer learning (VGG16, VGG19, Xception, InceptionResNetV2), majority-vote ensemble & 98.52\% & Derived dataset may lack clinical diversity; mostly 2D slice-based\\
+\citet{elassy2024cnn} & ADNI & Dual CNN branches with different filter sizes, concatenated; 3/4/5-class & 99.43\%, 99.57\%, 99.13\% & Possible overfitting; no cross-dataset validation; limited explainability\\
+\citet{odimayo2024structure} & ADNI + OASIS & Structure-focused CNN, gamma correction, midsagittal and parasagittal planes & 97--98\% & Specific MRI planes only; high computational cost; limited generalisation testing\\
+\citet{mousavi2025classifying} & ADNI-derived MRI (6,735 images) & Transfer learning (VGG16, VGG19, Xception, InceptionResNetV2), majority-vote ensemble & 98.52\% & Derived dataset may lack clinical diversity; mostly 2D slice-based\\
 \midrule
 \multicolumn{5}{@{}l}{\textit{EEG-based approaches}}\\
 \citet{kim2023caueeg} & CAUEEG & CEEDNet: end-to-end 1D/2D CNN and transformer family on raw EEG with age & 70.2\% single, 74.7\% ensemble (three-class, per recording) & Single dataset; large models (11--87M parameters); limited interpretability\\
-MDPI EEG dataset (2023) & AD, FTD and healthy EEG & Dataset publication & Not a model paper & No benchmark model; limited size\\
-Jungrungrueang et al. (2024) & Resting-state EEG & Dynamic EEG connectivity features with CNN classification & 93.6\% (multi-class) & EEG only; no MRI integration\\
+\citet{miltiadous2023dataset} & AD, FTD and healthy EEG & Dataset publication & Not a model paper & No benchmark model; limited size\\
+\citet{jungrungrueang2025translational} & Resting-state EEG & Dynamic EEG connectivity features with CNN classification & 93.6\% (multi-class) & EEG only; no MRI integration\\
 \midrule
 \multicolumn{5}{@{}l}{\textit{Other modalities}}\\
-vkola-lab & Framingham Heart Study voice recordings & CNN + LSTM on audio, minimal feature engineering & Binary classification & No MRI comparison; restricted clinical data\\
+\citet{xue2021voice} & Framingham Heart Study voice recordings & CNN + LSTM on audio, minimal feature engineering & Binary classification & No MRI comparison; restricted clinical data\\
 \bottomrule
 \end{tabularx}\\[2pt]
 \parbox{\textwidth}{\scriptsize ADNI: Alzheimer's Disease Neuroimaging Initiative; OASIS: Open Access Series of
 Imaging Studies; CNN: convolutional neural network; LSTM: long short-term memory; AD: Alzheimer's disease; FTD:
-frontotemporal dementia. \todo{add full APA references for the MRI, MDPI, Jungrungrueang and vkola-lab studies}}
+frontotemporal dementia.}
 \end{table}
 
 \textbf{EEG markers of cognitive decline.} Spectral slowing (theta/alpha and delta/alpha ratios), lower alpha

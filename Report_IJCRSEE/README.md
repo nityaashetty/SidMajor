@@ -21,7 +21,7 @@ The SANF-Net report laid out to match the IJCRSEE template (`../IJCRSEEtemplate 
 | `sections/04_baselines.tex` | Baseline models and results |
 | `sections/05_proposed_model.tex` | SANF-Net architecture and training |
 | `sections/06_ensemble_results.tex` | Final ensemble, test / CV results, ablations, confounds, external |
-| `sections/07_dashboard.tex` | **Placeholder**: clinical dashboard |
+| `sections/07_dashboard.tex` | Clinical dashboard (not included yet) |
 | `sections/08_discussion.tex` | Discussions + limitations |
 | `sections/09_conclusions.tex` | Conclusions |
 | `sections/10_declarations.tex` | Acknowledgements, funding, conflicts, data availability, IRB, author contributions |
@@ -33,11 +33,13 @@ The SANF-Net report laid out to match the IJCRSEE template (`../IJCRSEEtemplate 
 - **Official split and ensemble (72.9%):** `../Approach11_StateAwareNormative/artifacts/runs/sanf_net/results.json`. This holds three seeds; the ensemble averages their probabilities.
 - **Everything else** (CV, baselines, ablations, confounds, external): `../Paper/main.tex`, which is reproducible from `../Paper/analysis/`.
 
-## Still to do (search for `todo`)
+## Word version
 
-- Dashboard section and screenshot
-- Full APA references for the six non-CAUEEG studies in the literature survey table, and the CEFA-Net authors
-- Repository URL
-- Author contribution roles
-- Corresponding author: currently set to Siddarth Potdar; confirm
-- UDC and doi are assigned by the journal
+`python docx_build/build_docx.py [output.docx]` builds the Word file on the journal template (default
+`SANF-Net_IJCRSEE.docx`). Run `python docx_build/make_figures.py` first if the plots change.
+
+## Optional additions
+
+- Dashboard: `sections/07_dashboard.tex` holds an outline and is left out of the build. Once the dashboard exists, write
+  it in and add it back in `main.tex` and in `SECTIONS` in `docx_build/build_docx.py`.
+- UDC, doi and the revision and acceptance dates are assigned by the journal on acceptance.

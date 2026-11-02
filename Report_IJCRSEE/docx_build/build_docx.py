@@ -10,6 +10,7 @@ body by cloning the template's own paragraphs (section heading, body text, table
 figure caption, reference entry), so the output follows the template exactly.
 """
 import copy
+import sys
 import re
 from pathlib import Path
 
@@ -26,23 +27,24 @@ from docx.shared import Cm
 ROOT = Path(__file__).resolve().parent.parent
 BUILD = ROOT / "docx_build"
 TEMPLATE = BUILD / "IJCRSEE_template.docx"
-OUT = ROOT / "SANF-Net_IJCRSEE.docx"
+OUT = ROOT / (sys.argv[1] if len(sys.argv) > 1 else "SANF-Net_IJCRSEE.docx")
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 RED = "C00000"
 
-TITLE = ("State-Aware, Age-Normative Electroencephalography Classification of Mild Cognitive Impairment "
-         "and Dementia with a Lightweight Fusion Network")
-HEADER_CITE = ("Raut, S., Potdar, S., & Kannurkar, V. (", "202", "6",
-               "). State-aware, age-normative electroencephalography classification of mild cognitive "
-               "impairment and dementia. ")
-AUTHORS = [("Sanchit Raut", "1"), ("Siddarth Potdar", "1*"), ("Vedant Kannurkar", "1")]
+TITLE = ("Dementia Detection Using State-Aware, Age-Normative EEG Classification with a Lightweight "
+         "Fusion Network")
+HEADER_CITE = ("Potdar, S., Raut, S., & Kannurkar, V. (", "202", "6",
+               "). Dementia detection using state-aware, age-normative EEG classification with a "
+               "lightweight fusion network. ")
+AUTHORS = [("Siddarth Potdar", "1*"), ("Sanchit Raut", "1"), ("Vedant Kannurkar", "1")]
 AFFIL = ("Department of Computer Science and Engineering, Sardar Patel Institute of Technology, Mumbai, "
-         "India, e-mail: sanchit.raut23@spit.ac.in, siddarth.potdar23@spit.ac.in, vedant.kannurkar24@spit.ac.in")
+         "India, e-mail: siddarth.potdar23@spit.ac.in, sanchit.raut23@spit.ac.in, vedant.kannurkar24@spit.ac.in")
 CORRESPONDING = "siddarth.potdar23@spit.ac.in"
 
 SECTIONS = ["01_introduction", "02_literature_survey", "03_materials_methods", "04_baselines",
-            "05_proposed_model", "06_ensemble_results", "07_dashboard", "08_discussion",
-            "09_conclusions", "10_declarations"]
+            "05_proposed_model", "06_ensemble_results", "08_discussion",
+            "09_conclusions", "10_declarations"]   # add "07_dashboard" back once the dashboard is built
+RECEIVED = "Received: November 3, 2026."
 BACKMATTER = {"Acknowledgements", "Funding", "Conflict of Interests", "Data Availability Statement",
               "Institutional Review Board Statement", "Author Contributions"}
 FIG_IMG = {"figures/alignment.pdf": "alignment.png", "figures/protocol.pdf": "protocol.png",
@@ -122,7 +124,7 @@ def parse_bib(path):
 
 def tex_clean(s):
     for a, b in ((r"{\c{c}}", "ç"), (r"\c{c}", "ç"), (r"{\"o}", "ö"), (r"\"o", "ö"), (r"{\"e}", "ë"),
-                 (r"\"e", "ë"), (r"{\'a}", "á"), (r"\'a", "á"), ("--", "–"), (r"\url", "")):
+                 (r"\"e", "ë"), (r"{\'a}", "á"), (r"\'a", "á"), ("--", "–"), (r"\url", ""), (r"\&", "&")):
         s = s.replace(a, b)
     return re.sub(r"[{}]", "", s).strip()
 
@@ -746,6 +748,22 @@ def main():
                 return el
         raise KeyError(prefix)
 
+    # header box: real submission date; drop the journal-assigned placeholders (revision/acceptance dates, UDC, doi)
+    box = b[0] if b[0].tag == W + "tbl" else next(el for el in b if el.tag == W + "tbl")
+    for p in list(box.iter(W + "p")):
+        t = B._text(p).strip()
+        if t.startswith("Received"):
+            set_runs(B, p, [(RECEIVED, {})])
+        elif t.startswith(("Revised", "Accepted", "UDC", "doi")) or t in ("xxx", ""):
+            # also drops the empty spacer line and the journal's "Check for updates" badge (unpublished paper)
+            cell = p.getparent()
+            if len(cell.findall(W + "p")) > 1:
+                cell.remove(p)
+            else:
+                for child in list(p):
+                    if child.tag != W + "pPr":
+                        p.remove(child)
+
     # title, authors, affiliation
     title_p = at("Paper Title")
     set_runs(B, title_p, [(TITLE, {"b": True})])
@@ -755,6 +773,8 @@ def main():
     sp.set(qn("w:line"), "264"); sp.set(qn("w:lineRule"), "auto")
     snap = OxmlElement("w:snapToGrid"); snap.set(qn("w:val"), "0")
     sp.addprevious(snap)                     # don't stretch the 16 pt title onto the 12 pt line grid
+    nohyph = OxmlElement("w:suppressAutoHyphens")
+    snap.addprevious(nohyph)                 # wrap the title on whole words
     auth = []
     for k, (name, sup) in enumerate(AUTHORS):
         auth += [(name, {}), (sup, {"va": "superscript"})] + ([(", ", {})] if k < len(AUTHORS) - 1 else [])
@@ -786,6 +806,12 @@ def main():
     for t in last.findall(W + "t"):
         t.text = CORRESPONDING
     corr.append(last)
+    for rpr in corr.iter(W + "rPr"):          # template style here is not Arial Narrow; match the body text
+        f = rpr.find(W + "rFonts")
+        if f is None:
+            f = OxmlElement("w:rFonts"); rpr.insert(0, f)
+        for k in ("ascii", "hAnsi", "cs"):
+            f.set(qn(f"w:{k}"), "Arial Narrow")
 
     # drop all template body content after the keywords (keeping the corresponding-author block)
     start = B.idx["intro"]
